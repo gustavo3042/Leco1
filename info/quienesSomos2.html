@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUienes Somos</title>
+
+ 
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.js"></script>
+  
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.css" rel="stylesheet">
+  
+  
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- En el <head> -->
+   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+   </head>
+  
+    <!-- Estilos Personalizados -->
+    <style>
+      .hero {
+        background: #e0e0e0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
+  
+      .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+      }
+  
+      .whatsapp-float img {
+        width: 50px;
+        height: 50px;
+      }
+  
+      .text-justify {
+      text-align: justify;
+      }
+  
+      .noticia-img {
+          max-height: 250px;
+     /*  height: 200px; */
+      object-fit: cover;
+      width: 100%;
+      }
+  
+      .card-img-top {
+    height: 200px; /* o el alto que prefieras */
+    object-fit: cover;
+      }
+  
+      .img-custom {
+    max-width: 100%; /* Asegura que no se salga de la columna */
+    height: auto;
+    max-height: 400px; /* Ajusta este valor según lo que necesites */
+      }
+  
+      .bottom-text {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+      }
+      
+      .logo {
+      height: 60px; /* Más grande que el típico 40px */
+      width: auto;
+      }
+  
+  
+      .hero-section {
+        background: #1e344f; /* Azul oscuro */
+        color: white;
+        position: relative;
+        overflow: hidden;
+        padding: 100px 0;
+      }
+      .hero-section::after {
+        content: "";
+        background: url('ruta-del-mapa.png') no-repeat center center;
+        background-size: cover;
+        opacity: 0.05;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      .hero-wave {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      .btn-primary {
+        background-color: #144e8a;
+        border-color: #144e8a;
+      }
+      .video-thumbnail {
+        position: relative;
+        cursor: pointer;
+      }
+      .video-thumbnail::after {
+        content: "▶";
+        font-size: 48px;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        padding: 10px 15px;
+      }
+  
+  /* Mejorar el texto de la marca (LECO LATAM) */
+  .navbar-brand span {
+      font-size: 1.5rem; /* más grande */
+      font-weight: bold; /* más grueso */
+      color: #ffffff; /* blanco puro */
+      letter-spacing: 1px; /* un poquito más espaciado */
+    }
+  
+    .navbar-nav .nav-link {
+      color: #ffffff !important; /* blanco */
+      font-size: 0.95rem; /* más pequeño que 1.1rem */
+      font-weight: 500; /* medio-bold */
+  }
+  
+  .navbar-nav .nav-link.active, 
+  .navbar-nav .nav-link:hover {
+      color: #00ff99 !important; /* color para hover y activo */
+  }
+  
+  /* Opcional: puedes darle un poco más de espaciado */
+  .navbar-nav {
+      gap: 0.5rem; /* separa un poco los elementos */
+  }
+  
+  /* Estilo general de la navbar */
+  .custom-navbar {
+      background-color: #4a4a4a;
+  }
+  
+  /* Transición para efectos */
+  .transition:hover {
+      transform: translateY(-8px);
+      transition: all 0.3s ease;
+  }
+  
+    .custom-footer{
+  
+      background-color: #4a4a4a; /* un gris intermedio */
+  }
+  
+  
+    #calendar {
+      max-width: 100%;
+      margin: 0 auto;
+  }
+  
+  .hover-zoom {
+    transition: transform 0.3s ease;
+  }
+  .hover-zoom:hover {
+    transform: scale(1.05);
+  }
+  
+    </style>
+<body>
+
+      
+   <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
+    <div class="container-fluid">
+      <!-- Logo a la izquierda + Texto -->
+       <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="../media/logo_transparente.png" alt="Logo" width="55" height="55" class="d-inline-block align-text-top me-2">
+      
+        <span class="d-flex flex-row align-items-center">
+          <span class="text-white fw-bold fs-4 me-1">Leco</span>
+          <span class="text-white fw-bold fs-4">Latam</span>
+        </span>
+      </a> 
+
+    
+  
+      <!-- Botón hamburguesa para móviles -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Menú de navegación a la derecha -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-lg-center small">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="../index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Quienes Somos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="nuestrosServicios.html">Nuestros Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="comoTrabajamos.html">Cómo Trabajamos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="noticias.html">Noticias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="directorio.html">Directorio</a>
+          </li>
+
+         
+
+          <!-- Botón Agenda tu Reunión -->
+          <li class="nav-item ms-lg-3">
+            <a class="btn btn-success d-flex align-items-center" href="#">
+              <i class="bi bi-calendar-event me-2"></i> Agenda tu Reunión
+            </a>
+          </li>
+
+
+          <li class="nav-item ms-3 d-flex align-items-center">
+            <a href="#" class="nav-link p-0">
+              <img src="../media/españa.png" alt="Español" width="25" height="17" class="me-2">
+            </a>
+            <a href="#" class="nav-link p-0">
+              <img src="../media/eeuu.png" alt="English" width="25" height="17">
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<main class="container my-5">
+
+
+  <section class="py-5 bg-light" data-aos="fade-up">
+    <div class="container py-5">
+      <div class="row align-items-center g-5">
+        <!-- Texto -->
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-4 display-5">Nuestra esencia y compromiso</h2>
+          <p class="text-muted lh-lg">
+            Desde 2010, el Consorcio LECO ha evolucionado de una empresa de ingeniería no invasiva a una red global de negocios.
+            Nuestra misión es conectar empresas, inversionistas y soluciones innovadoras para impulsar el crecimiento y la eficiencia,
+            consolidándonos como un referente en América Latina y el mundo.
+          </p>
+        </div>
+  
+        <!-- Imagen -->
+        <div class="col-lg-6 text-center">
+          <img src="../media/Directorio/LuisCarcamo.avif" alt="Luis Cárcamo Oyarzo" class="img-fluid rounded-4 shadow mb-3" style="max-width: 400px;">
+          <h5 class="fw-bold mt-3 mb-1">Luis Cárcamo Oyarzo</h5>
+          <p class="text-muted small">CEO Presidente Consorcio LECO</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="py-5" data-aos="fade-up">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h2 class="fw-bold">Ecosistema LECO LATAM</h2>
+          <p>
+            Ecosistema LECO LATAM nace en el sur de Chile como una empresa de buceo industrial, 
+            y evoluciona hacia una red empresarial con más de 250 empresas aliadas, conectando 
+            gobiernos, inversionistas, operadores y empresas en toda América Latina.
+          </p>
+          <p>
+            Hoy ofrecemos soluciones integrales en <strong>ingeniería no invasiva</strong>, 
+            tratamiento de aguas, dragado, construcción, automatización y más. 
+            Nos guiamos por un modelo de 4 fases: diagnóstico, diseño, ejecución y expansión, 
+            garantizando eficiencia, impacto y continuidad operativa.
+          </p>
+  
+          <div class="row my-4">
+            <div class="col-md-6">
+              <h5><i class="bi bi-geo-alt-fill me-2"></i>Presencia regional:</h5>
+              <p>Chile, Perú, Argentina, Panamá y expansión.</p>
+            </div>
+            <div class="col-md-6">
+              <h5><i class="bi bi-handshake-fill me-2"></i>Alianzas activas:</h5>
+              <p>GRI, IRADE, ACADES, AIDIS.</p>
+            </div>
+          </div>
+  
+          <div class="my-4">
+            <h5><i class="bi bi-lightbulb-fill me-2"></i>Nuestra misión:</h5>
+            <p>
+              Impulsar el desarrollo sostenible e innovador, conectando capacidades técnicas 
+              con oportunidades reales.
+            </p>
+          </div>
+  
+          <blockquote class="blockquote mt-4">
+            <p class="mb-0">"No vinimos a competir, vinimos a construir juntos."</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-5" data-aos="fade-up">
+    <div class="container">
+      <!-- Imagen principal -->
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-10 text-center">
+          <img src="../media/quienesSomos/reunion.avif" alt="Reunión LECO LATAM" class="img-fluid rounded-4 shadow">
+        </div>
+      </div>
+  
+      <!-- Galería -->
+      <div class="text-center mb-5">
+        <h2 class="fw-bold display-5">Galería</h2>
+        <p class="text-muted">Explora nuestro compromiso con la innovación.</p>
+      </div>
+  
+      <div class="row g-4">
+        <!-- Reutilizamos el mismo formato para cada imagen -->
+        <div class="col-md-4">
+          <img src="../media/quienesSomos/galeria1.avif" alt="Imagen 1" class="img-fluid rounded-4 shadow-sm hover-zoom">
+        </div>
+        <div class="col-md-4">
+          <img src="../media/quienesSomos/galeria2.avif" alt="Imagen 2" class="img-fluid rounded-4 shadow-sm hover-zoom">
+        </div>
+        <div class="col-md-4">
+          <img src="../media/quienesSomos/galeria3.avif" alt="Imagen 3" class="img-fluid rounded-4 shadow-sm hover-zoom">
+        </div>
+        <div class="col-md-4">
+          <img src="../media/quienesSomos/galeria4.avif" alt="Imagen 4" class="img-fluid rounded-4 shadow-sm hover-zoom">
+        </div>
+        <div class="col-md-4">
+          <img src="../media/quienesSomos/galeria5.avif" alt="Imagen 5" class="img-fluid rounded-4 shadow-sm hover-zoom">
+        </div>
+        <div class="col-md-4">
+          <img src="../media/quienesSomos/galeria6.avif" alt="Imagen 6" class="img-fluid rounded-4 shadow-sm hover-zoom">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+ 
+  
+ 
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+ 
+  
+  <section class="container my-5" data-aos="fade-up">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <h2 class="mb-4 display-5">Ubicación</h2>
+        <p class="text-muted lh-lg">Nos encontramos en un entorno estratégico que potencia la innovación y el crecimiento, alineados con nuestra visión de colaboración y desarrollo global.</p>
+        <p><strong>Dirección:</strong><br>Chillán, Chile</p>
+      </div>
+      <div class="col-lg-6">
+        <div class="ratio ratio-16x9 rounded-4 shadow overflow-hidden">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31833.1403165669!2d-72.1337783!3d-36.6062611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x966845d7253cc6d3%3A0x6c4f61f64d10c73d!2sChill%C3%A1n%2C%20Ñuble%2C%20Chile!5e0!3m2!1ses-419!2scl!4v1713533918061!5m2!1ses-419!2scl" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Opcional: efecto de zoom suave para imágenes -->
+
+
+ 
+ 
+  
+      
+  </main>
+  
+
+
+    
+  <!-- Bootstrap + Icons CDN -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+        
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+
+
+<footer class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Sobre Nosotros -->
+        <div class="col-md-3 mb-4">
+          <h5>Sobre Nosotros</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">Quiénes Somos</a></li>
+            <li><a href="#" class="text-white-50">Historia</a></li>
+            <li><a href="#" class="text-white-50">Visión & Valores</a></li>
+            <li><a href="#" class="text-white-50">Modelo de Éxito</a></li>
+          </ul>
+        </div>
+  
+        <!-- Servicios -->
+        <div class="col-md-3 mb-4">
+          <h5>Servicios</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">Ingeniería No Invasiva</a></li>
+            <li><a href="#" class="text-white-50">Ejecución Tecnica y Operativa</a></li>
+            <li><a href="#" class="text-white-50">Inversión y Estructurada</a></li>
+            <li><a href="#" class="text-white-50">Inteligencia Comercial</a></li>
+            <li><a href="#" class="text-white-50">Visibilidad y Networking</a></li>
+            <li><a href="#" class="text-white-50">Red de Franquicias</a></li>
+           
+          </ul>
+        </div>
+  
+        <!-- Síguenos -->
+        <div class="col-md-3 mb-4">
+          <h5>Síguenos</h5>
+          <div class="d-flex mb-2">
+            <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-white me-3 mb-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white me-3 mb-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white me-3 mb-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3 mb-2"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="text-white me-3 mb-2"><i class="bi bi-tiktok"></i></a>
+          </div>
+          <p class="mb-1">Contacto<br><a href="mailto:leco.cl" class="text-white-50">@leco.cl</a></p>
+          <p class="mb-0">+56 600 401 1980</p>
+          <p class="mb-0">www.leco.cl</p>
+        </div>
+  
+        <!-- Newsletter -->
+        <div class="col-md-3 mb-4">
+          <h5>Suscríbete a nuestro newsletter</h5>
+          <p class="text-white-50">Recibe nuestras últimas noticias y actualizaciones</p>
+          <form>
+            <div class="input-group">
+              <input type="email" class="form-control" placeholder="Email" required>
+              <button class="btn btn-primary" type="submit">Suscribirme</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <div class="d-flex justify-content-between pt-4 mt-4 border-top text-white-50 small">
+        <div>© 2025 LECO LATAM. Todos los derechos reservados.</div>
+        <div>
+          <a href="#" class="text-white-50 me-3">Política de privacidad</a>
+          <a href="#" class="text-white-50">Términos & condiciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</html>
