@@ -608,13 +608,6 @@
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* sombra suave opcional */
 }
 
-/* .directorio-img {
-  width: 100%;
-  max-width: 200px;
-  height: 250px;
-  object-fit: cover;
-} */
-
 
 
   </style>
@@ -635,7 +628,7 @@
     
       <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" href="#">
         <img src="media/logo_transparente.png" alt="Logo" width="40" height="40">
-        LECO LATAM
+        CONSORCIO LECO
       </a>
     
    
@@ -655,8 +648,7 @@
     <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/comoTrabajamos.html">Proveedores</a></li>
     <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/noticias.html">Noticias</a></li>
     <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/directorio.html">Directorio</a></li>
-    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/revista.html">Revista</a></li>
-    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/calendario.html">Congresos y Seminarios</a></li>
+  
   </ul>
 
  
@@ -689,87 +681,33 @@
   <!-- ====================== HERO SECTION ====================== -->
 
 
+<section class="hero position-relative overflow-hidden py-5" style="height: 100vh;">
+  <!-- Video de fondo -->
+  <video id="backgroundVideo" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" autoplay muted loop playsinline></video>
 
-  <section class="hero position-relative overflow-hidden py-5" style="height: 100vh;">
-    <video id="backgroundVideo" autoplay muted playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover">
-        <source src="media/bannerI.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-    </video>
-  
-   
-  
-    <audio id="backgroundMusic" preload="auto">
-        <source src="media/musicaArabe.mp3" type="audio/mpeg">
-        Tu navegador no soporta el audio.
-    </audio>
-  
-    <!-- Capa de oscurecimiento -->
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.5;"></div>
-  
-    <!-- Contenido -->
-    <div class="position-relative z-1 text-white p-5 text-center">
-        <h1 class="display-4 fw-bold text-uppercase mb-3">
-            <span style="display: block;">Conectamos Sudamérica con</span>
-            soluciones que no se detienen
-        </h1>
-        <p class="lead fw-bold mb-4">Ingeniería | Inversión | Territorio | Resultados Reales</p>
-  
-        <div class="mt-3 d-flex justify-content-center gap-3 flex-wrap">
-            <a href="Integracion.html" class="btn btn-warning btn-lg text-dark fw-bold">ÚNETE AL ECOSISTEMA</a>
-            <button id="musicToggleButton" class="btn btn-outline-light btn-lg fw-bold" onclick="toggleMusic()">🔊</button>
-        </div>
-    </div>
-  </section>
-  
+  <!-- Capa oscura -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.5;"></div>
+
+  <!-- Contenido -->
+  <div class="position-relative z-1 text-white p-5 text-center">
+    <h1 class="display-4 fw-bold text-uppercase mb-3">
+      <span style="display: block;">Empresas que colaboran</span>
+     soluciones que perduran
+    </h1>
+ <!--    <p class="lead fw-bold mb-4">Ingeniería | Inversión | Territorio | Resultados Reales</p> -->
+
  
-  
+
+    <div class="mt-3 d-flex justify-content-center gap-3 flex-wrap">
+     <!--  <a href="media/bannerNew.mp4" class="btn btn-warning btn-lg text-dark fw-bold">ÚNETE AL ECOSISTEMA</a> -->
+            <a href="contacto.html" class="btn btn-warning btn-lg text-dark fw-bold">CONTACTO</a>
+      <button id="musicToggleButton" class="btn btn-outline-light btn-lg fw-bold" onclick="toggleVideoAudio()">🔇</button>
+    </div>
+  </div>
+</section>
 
 
 
-<!-- <script> 
-  const music1 = document.getElementById('backgroundMusic1');
-  const music2 = document.getElementById('backgroundMusic2');
-  const musicToggleButton = document.getElementById('musicToggleButton');
-
-  // Iniciar la primera canción
-  let isMusicPlaying = true; // Variable para controlar el estado de la música
-
-  music1.play();
-
-  // Cambiar a la segunda canción cuando la primera termine
-  music1.addEventListener('ended', () => {
-    music2.play();
-  });
-
-  music2.addEventListener('ended', () => {
-    music1.play();
-  });
-
-  // Función para alternar el sonido (pausar y reanudar)
-  function toggleMusic() {
-    if (isMusicPlaying) {
-      music1.pause();
-      music2.pause();
-      musicToggleButton.textContent = '🔇'; // Cambiar icono a apagado
-    } else {
-      music1.play();
-      musicToggleButton.textContent = '🔊'; // Cambiar icono a encendido
-    }
-    isMusicPlaying = !isMusicPlaying; // Alternar el estado de la música
-  }
-</script> -->
-
-
-
-
-
-
-
-
-
-
-
-  
 
   <!-- ====================== MAIN CONTENT ====================== -->
   <main class="container my-5">
@@ -781,20 +719,26 @@
       <div class="row align-items-center">
         <!-- Texto -->
         <div class="col-lg-6 mb-4 mb-lg-0">
-          <h2 class="fw-bold mb-4">Conectamos <br>Soluciones Reales <br>para América Latina</h2>
-          <p class="mb-4">
-            Somos un ecosistema empresarial que nació en el sur de Chile para transformar necesidades reales en soluciones sostenibles.
-            Conectamos empresas, personas y gobiernos en toda Sudamérica. Nuestra historia es de innovación, ingeniería y compromiso.
+       <!--    <h1 class="fw-bold mb-4">¿Quiénes somos?</h1> -->
+            
+         <h2 class="fw-bold mb-4">¿Qué es el Consorcio LECO?</h2>
+        
+          
+          <p class="mb-4 text-justify">
+         
+El Consorcio LECO es una estructura empresarial colaborativa compuesta por distintas empresas especializadas que trabajan juntas para desarrollar proyectos en infraestructura, servicios industriales, ingeniería no invasiva y soluciones ambientales.
+Integramos empresas propias, aliadas, franquiciadas y una representación comercial para ofrecer soluciones innovadoras y de alta calidad.
+Actualmente, estamos desarrollamos el ecosistema LECO-LATAM, que impulsa proyectos sostenibles y colaborativos en América Latina.
           </p>
-          <a href="#" class="btn btn-outline-primary">Conoce la historia contada por su fundador.</a>
+        <!--   <a href="#" class="btn btn-outline-primary">Conoce la historia contada por su fundador.</a> -->
         </div>
     
         <!-- Video o Imagen -->
         <div class="col-lg-6 text-center">
           <div class="position-relative">
-            <img src="media/fundador.png" alt="Ecosistema LECO LATAM" class="img-fluid rounded">
+            <img src="media/NewConsorcioLeco.jpeg" alt="Ecosistema LECO LATAM" class="img-fluid rounded">
             <a href="https://www.youtube.com/watch?v=_pTjiuwxYvo" class="position-absolute top-50 start-50 translate-middle">
-              <i class="bi bi-play-circle-fill" style="font-size: 4rem; color: white;"></i>
+             <!--  <i class="bi bi-play-circle-fill" style="font-size: 4rem; color: white;"></i> -->
             </a>
           </div>
         </div>
@@ -817,21 +761,21 @@
               <i class="bi bi-flag-fill" style="font-size: 2rem; color: #ff6600;"></i>
               <h5 class="mt-3">Misión</h5>
               <p class="text-muted">
-                Conectar personas y gobiernos mediante integración tecnológica en Sudamérica.
+             El Consorcio LECO busca unir y fortalecer empresas mediante un modelo colaborativo que impulse proyectos de alta calidad, con respaldo tecnológico y eficiencia, generando valor compartido para clientes, aliados y el entorno.
               </p>
             </div>
             <div class="col-md-4 mb-4">
               <i class="bi bi-eye-fill" style="font-size: 2rem; color: #007bff;"></i>
               <h5 class="mt-3">Visión</h5>
               <p class="text-muted">
-                Ser la empresa líder en soluciones técnicas integradas y sostenibles en la región.
+          Aspiramos a consolidar una plataforma colaborativa que integre empresas técnicas y comerciales para ejecutar proyectos complejos con orden, eficiencia y altos estándares de calidad, beneficiando a clientes, aliados y territorios.
               </p>
             </div>
             <div class="col-md-4 mb-4">
               <i class="bi bi-people-fill" style="font-size: 2rem; color: #00b894;"></i>
               <h5 class="mt-3">Valores</h5>
               <p class="text-muted">
-                Actuar con integridad y compromiso, creando valor sostenible para los grupos de interés.
+              Priorizamos la seguridad con excelencia técnica e innovación, garantizando soluciones confiables y eficientes en entornos de alto riesgo.
               </p>
             </div>
           </div>
@@ -846,10 +790,10 @@
               <div class="card-body">
             <h5>
               <i class="bi bi-rocket-takeoff-fill text-primary me-2"></i>
-              Soluciones Integradas <a href="#" class="text-primary text-decoration-none fw-semibold">LECO LATAM</a>
+            Soluciones integradas para desafíos reales <a href="#" class="text-primary text-decoration-none fw-semibold">CONSORCIO LECO</a>
             </h5>
             <p class="text-muted">
-              Acompañamos cada fase de su proyecto, ofreciendo tecnología y valor estratégico.
+            Si no puedes detener tu planta, nosotros tampoco la detenemos. Nuestra misión es clara: resolver problemas complejos sin detener tus procesos.
             </p>
           </div>
           </div>
@@ -859,162 +803,142 @@
       </section>
 
       
-    <!-- === Nuestros Servicios === -->
+    <!-- ===Servicios=== -->
 
-    <section class="container py-5 my-5" data-aos="fade-up">
-      
-      <h2 class="text-center fw-bold text-black mb-4">Nuestros Servicios</h2>
-      <p class="text-center fw-bold text-muted mb-5 fs-5">Potenciamos tu proyecto o negocio en cada etapa con un portafolio integral de soluciones.</p>
-    
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-    
-  
-        <div class="col">
-          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
-            <div class="zoom-image-container">
-              <img src="media/tecnologia_no_invasiva.jpeg" class="card-img-top zoom-image" alt="Networking">
-            </div>
-            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
-              <h5 class="card-title fw-bold fs-4">Ingenieria No Invasiva</h5>
-              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
-            </div>
-          </div>
-        </div>
-    
    
-  
-        <div class="col">
-          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
-            <div class="zoom-image-container">
-              <img src="media/segundo_servicio.jpeg" class="card-img-top zoom-image" alt="Networking">
-            </div>
-            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
-              <h5 class="card-title fw-bold fs-4">Ejecución Técnica y Operativa</h5>
-              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
-            </div>
-          </div>
-        </div>
-    
-  
-  
-        <div class="col">
-          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
-            <div class="zoom-image-container">
-              <img src="media/inversion_estructurada3.jpeg" class="card-img-top zoom-image" alt="Networking">
-            </div>
-            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
-              <h5 class="card-title fw-bold fs-4">Inversión Estructurada</h5>
-              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
-            </div>
-          </div>
-        </div>
-  
-        
-    
-    
-  
-        
-        <div class="col">
-          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
-            <div class="zoom-image-container">
-              <img src="media/inteligenciaComercial7.jpeg" class="card-img-top zoom-image" alt="Networking">
-            </div>
-            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
-              <h5 class="card-title fw-bold fs-4">Inteligencia Comercial</h5>
-              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
-            </div>
-          </div>
-        </div>
-    
-     
-  
-        <div class="col">
-          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
-            <div class="zoom-image-container">
-              <img src="media/networking2.png" class="card-img-top zoom-image" alt="Networking">
-            </div>
-            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
-              <h5 class="card-title fw-bold fs-4">Visibilidad y Networking</h5>
-              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
-            </div>
-          </div>
-        </div>
-    
-     
-  
-        <div class="col">
-          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
-            <div class="zoom-image-container">
-              <img src="media/redDeFranquicias7.jpeg" class="card-img-top zoom-image" alt="Networking">
-            </div>
-            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
-              <h5 class="card-title fw-bold fs-4">Visibilidad y Networking</h5>
-              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
-            </div>
-          </div>
-        </div>
-    
-      </div>
-    </section>
 
 
-      
-      <!-- Nuestro modelo de trabajo -->
-  
-  <section class="py-5 my-5 bg-light text-center" data-aos="fade-up">
-    <div class="container">
+  <section class="container py-5 my-5" data-aos="fade-up">
+  <h2 class="text-center fw-bold text-black mb-4">Nuestros Servicios</h2>
+  <h5 class="mb-4 text-center">Potenciamos tu proyecto o negocio en cada etapa con un portafolio integral de soluciones.</h5>
 
-      <h2 class="text-center fw-bold text-black mb-4">Nuestro Modelo de Trabajo</h2>
-      <p class="text-center fw-bold text-muted mb-5 fs-5">Un proceso estructurado en 4 fases para garantizar resultados medibles y sostenibles.</p>
-<!-- 
-      <h2 class="mb-4 text-black">Nuestro Modelo de Trabajo</h2>
-      <p class="mb-5 fw-bold">Un proceso estructurado en 4 fases para garantizar resultados medibles y sostenibles.</p> -->
-  
-      <div class="row gy-5">
-        
-        <div class="col-12 col-md-3">
-          <div class="p-4 bg-white shadow rounded-4 h-100 transition" style="border-top: 5px solid #0d6efd;">
-            <div class="mb-3">
-              <i class="bi bi-search fs-1 text-primary"></i>
-            </div>
-            <div class="fw-bold mb-2 fs-5">1. Diagnóstico Inicial</div>
-            <p class="text-muted small">Análisis profundo de necesidades, oportunidades y desafíos.</p>
-          </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+
+    <div class="col">
+      <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+        <div class="zoom-image-container">
+          <video class="card-img-top zoom-image" autoplay loop muted playsinline>
+            <source src="media/espaciosConfinados/espaciosConfinadosVideo.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
         </div>
-        
-        <div class="col-12 col-md-3">
-          <div class="p-4 bg-white shadow rounded-4 h-100 transition" style="border-top: 5px solid #198754;">
-            <div class="mb-3">
-              <i class="bi bi-people fs-1 text-success"></i>
-            </div>
-            <div class="fw-bold mb-2 fs-5">2. Diseño de Solución</div>
-            <p class="text-muted small">Co-creación de estrategias y planes de acción a medida.</p>
-          </div>
+        <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+          <h5 class="card-title fw-bold fs-4">Espacios Confinados</h5>
+          <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
         </div>
-        
-        <div class="col-12 col-md-3">
-          <div class="p-4 bg-white shadow rounded-4 h-100 transition" style="border-top: 5px solid #ffc107;">
-            <div class="mb-3">
-              <i class="bi bi-rocket fs-1 text-warning"></i>
-            </div>
-            <div class="fw-bold mb-2 fs-5">3. Ejecución</div>
-            <p class="text-muted small">Implementación eficiente con equipos expertos y aliados estratégicos.</p>
-          </div>
-        </div>
-        
-        <div class="col-12 col-md-3">
-          <div class="p-4 bg-white shadow rounded-4 h-100 transition" style="border-top: 5px solid #dc3545;">
-            <div class="mb-3">
-              <i class="bi bi-bullseye fs-1 text-danger"></i>
-            </div>
-            <div class="fw-bold mb-2 fs-5">4. Posicionamiento y Expansión</div>
-            <p class="text-muted small">Consolidación de resultados y búsqueda de nuevas oportunidades de crecimiento.</p>
-          </div>
-        </div>
-  
       </div>
     </div>
-  </section>
+
+    <div class="col">
+      <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+        <div class="zoom-image-container">
+          <video class="card-img-top zoom-image" autoplay loop muted playsinline>
+            <source src="media/dragado/dragado.MP4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+        </div>
+        <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+          <h5 class="card-title fw-bold fs-4">Dragado</h5>
+          <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+        <div class="zoom-image-container">
+          <video class="card-img-top zoom-image" autoplay loop muted playsinline>
+            <source src="media/termofusion/NewTermofusion.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+        </div>
+        <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+          <h5 class="card-title fw-bold fs-4">Termofusión</h5>
+          <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+        <div class="zoom-image-container">
+          <video class="card-img-top zoom-image" autoplay loop muted playsinline>
+            <source src="media/TransporteLodos/TransporteLodosVideo1.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+        </div>
+        <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+          <h5 class="card-title fw-bold fs-4">Transporte de Lodos</h5>
+          <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+        <div class="zoom-image-container">
+          <video class="card-img-top zoom-image" autoplay loop muted playsinline>
+            <source src="media/Maestranza/newMaestranza.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+        </div>
+        <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+          <h5 class="card-title fw-bold fs-4">Maestranza</h5>
+          <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    
+
+     <!-- === Servicios Destacados=== -->
+
+  
+       <section class="container py-5 my-5" data-aos="fade-up">
+  <h2 class="text-center fw-bold text-black mb-4">Servicios Destacados</h2>
+  <h5 class="mb-4 text-center">Innovación colaborativa con huella sostenible.</h5>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+
+    <div class="col">
+      <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+        <div class="zoom-image-container">
+          <video class="card-img-top zoom-image" autoplay loop muted playsinline>
+            <source src="media/empresasAliadas/arabe.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+        </div>
+        <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+          <h5 class="card-title fw-bold fs-4">Empresas Aliadas</h5>
+          <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+        <div class="zoom-image-container">
+          <video class="card-img-top zoom-image" autoplay loop muted playsinline>
+            <source src="media/RepresentacionesMultisectoriales/RepresentacionesMultisectoriales.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+        </div>
+        <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+          <h5 class="card-title fw-bold fs-4">Representaciones Multisectoriales</h5>
+          <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      
+    
   
  
   
@@ -1038,34 +962,7 @@
           <h2 class="text-center fw-bold text-black mb-4">Nuestra Red en América Latina</h2>
       <p class="text-center fw-bold text-muted mb-5 fs-5">Conectamos oportunidades, empresas y proyectos en todo el continente.</p>
           
-          <ul class="d-flex flex-wrap justify-content-center gap-3 mt-4" role="list" style="list-style: none; padding: 0;">
-             <li role="listitem">
-              <a href="espaciosConfinados/index.html" class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2 text-decoration-none">
-                Espacios Confinados
-              </a>
-            </li>
-            <li role="listitem">
-              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Dragado</span>
-            </li>
-            <li role="listitem">
-              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Construcción</span>
-            </li>
-            <li role="listitem">
-              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Maestranza</span>
-            </li>
-            <li role="listitem">
-              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Transporte Lodos</span>
-            </li>
-            <li role="listitem">
-              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Termofusión</span>
-            </li>
-            <li role="listitem">
-              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Empresas Aliadas</span>
-            </li>
-            <li role="listitem">
-              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Representaciones</span>
-            </li>
-          </ul>
+         
         </div>
     
         <!-- Mapa y Clientes -->
@@ -1831,169 +1728,28 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-<section class="py-5 my-5 bg-light">
-  <div class="container">
-    <div class="row align-items-start">
-      
-      <!-- Información de Conexión -->
-      <div class="col-md-6 mb-4" data-aos="fade-right">
 
 
-       
 
- 
-        <h2 class="fw-bold">Conecta con LECO LATAM</h2>
 
-        <p class="text-muted">✉️ Suscríbete a la Revista LECO Latam
-Descubre el poder de la conexión técnica, comercial y territorial en Sudamérica.</p>
-<p class="text-muted text-justify">Accede a casos reales, proyectos innovadores, oportunidades de inversión y entrevistas con líderes que están transformando la región.</p>
-<p class="text-muted text-justify">📰 Sé parte del ecosistema que no solo informa… ejecuta.</p>
 
-<p class="text-muted text-justify">🔗 [Suscribirme ahora] </p>
-<!--         <p class="text-muted">Sé parte de nuestra red de empresas, expertos e instituciones que impulsan el desarrollo sostenible</p>
-       <p class="text-muted text-justify">LECO LATAM es una plataforma que conecta técnica, inversión y territorio para ejecutar proyectos reales en Sudamérica.
-        Nuestra revista digital muestra casos de éxito, oportunidades de inversión y tendencias clave en ingeniería y desarrollo regional.
-        Es una ventana al ecosistema colaborativo que está transformando la región con soluciones concretas y sostenibles.</p> -->
-        
-        <div class="row">
-          <div class="col-6">
-            <h5 class="fw-bold">¿Quiénes pueden unirse?</h5>
-            <ul class="list-unstyled">
-              <li class="mb-2"><i class="bi bi-building-check me-2 text-primary"></i> Empresas Técnicas</li>
-              <li class="mb-2"><i class="bi bi-bank me-2 text-primary"></i> Gobiernos y Entidades</li>
-              <li class="mb-2"><i class="bi bi-coin me-2 text-primary"></i> Inversionistas y Fondos</li>
-              <li class="mb-2"><i class="bi bi-person-badge me-2 text-primary"></i> Consultores Especializados</li>
-            </ul>
-          </div>
-          
-          <div class="col-6">
-            <h5 class="fw-bold">Beneficios Destacados:</h5>
-            <ul class="list-unstyled">
-              <li class="mb-2"><i class="bi bi-briefcase me-2 text-primary"></i> Oportunidades de negocio exclusivas</li>
-              <li class="mb-2"><i class="bi bi-people me-2 text-primary"></i> Networking de alto impacto</li>
-              <li class="mb-2"><i class="bi bi-globe me-2 text-primary"></i> Visibilidad regional e internacional</li>
-              <li class="mb-2"><i class="bi bi-graph-up-arrow me-2 text-primary"></i> Acceso a inteligencia de financiamiento</li>
-            </ul>
-          </div>
-        </div>
 
-        <a href="#" class="btn btn-primary mt-3">Conocer los requisitos</a>
 
-      
+  <!-- Directorio  data-aos="fade-up"-->
 
-      </div>
 
-      <!-- Formulario de Integración -->
-      <div class="col-md-6" data-aos="fade-left">
-        <form 
-          class="p-5 shadow-lg rounded-4 bg-white needs-validation" 
-          action="/ruta-de-tu-endpoint" 
-          method="POST" 
-          novalidate
-        >
-          <h3 class="mb-4 text-center fw-bold text-primary">Formulario Revista</h3>
-      
-          <div class="mb-3">
-            <label for="nombre" class="form-label fw-semibold">Tu Nombre</label>
-            <div class="input-group has-validation">
-              <span class="input-group-text">
-                <i class="bi bi-person-fill"></i>
-              </span>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="nombre" 
-                name="nombre" 
-                placeholder="Nombre completo" 
-                required
-              >
-              <div class="invalid-feedback">
-                Por favor ingresa tu nombre.
-              </div>
-            </div>
-          </div>
-      
-          <div class="mb-3">
-            <label for="correo" class="form-label fw-semibold">Correo Electrónico</label>
-            <div class="input-group has-validation">
-              <span class="input-group-text">
-                <i class="bi bi-envelope-fill"></i>
-              </span>
-              <input 
-                type="email" 
-                class="form-control" 
-                id="correo" 
-                name="correo" 
-                placeholder="correo@ejemplo.com" 
-                required
-              >
-              <div class="invalid-feedback">
-                Por favor ingresa un correo válido.
-              </div>
-            </div>
-          </div>
-      
-          <div class="mb-3">
-            <label for="asunto" class="form-label fw-semibold">Asunto</label>
-            <div class="input-group has-validation">
-              <span class="input-group-text">
-                <i class="bi bi-chat-dots-fill"></i>
-              </span>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="asunto" 
-                name="asunto" 
-                placeholder="Tema del mensaje" 
-                required
-              >
-              <div class="invalid-feedback">
-                El asunto es obligatorio.
-              </div>
-            </div>
-          </div>
-      
-          <div class="mb-3">
-            <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
-            <div class="input-group has-validation">
-              <span class="input-group-text">
-                <i class="bi bi-pencil-square"></i>
-              </span>
-              <textarea 
-                class="form-control" 
-                id="mensaje" 
-                name="mensaje" 
-                placeholder="Escribe tu mensaje aquí..." 
-                style="height: 150px;" 
-                required
-              ></textarea>
-              <div class="invalid-feedback">
-                No olvides escribir tu mensaje.
-              </div>
-            </div>
-          </div>
-      
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary btn-lg mt-3">
-              <i class="bi bi-send-fill me-2"></i>Enviar Mensaje
-            </button>
-          </div>
-        </form>
-      </div>
-      
-
-       
-      </div>
-
-    </div>
   
-</section>
 
 
 
 
 
-<section class="container my-5 py-5" data-aos="fade-up">
+  
+  <!-- Asegúrate de tener Bootstrap Icons si quieres los íconos -->
+
+  
+
+  <section class="container my-5 py-5" data-aos="fade-up">
   <h3 class="fw-bold text-center text-black mb-4">ACTUALIDAD LECO LATAM NOTICIAS</h3>
   <p class="text-center fw-bold">Descubre las últimas novedades, casos de éxito y tendencias del sector.</p>
 
@@ -2210,13 +1966,6 @@ Descubre el poder de la conexión técnica, comercial y territorial en Sudaméri
     </div>
   </div>
 </section>
-
-
-  
-  <!-- Asegúrate de tener Bootstrap Icons si quieres los íconos -->
-
-  
-
 
  
 
@@ -2772,6 +2521,7 @@ Descubre el poder de la conexión técnica, comercial y territorial en Sudaméri
   
 
   
+  
 
   
   <!-- Bootstrap + Icons CDN -->
@@ -2889,7 +2639,27 @@ Descubre el poder de la conexión técnica, comercial y territorial en Sudaméri
 
 </html>
 
+
 <script>
+  const videoElement = document.getElementById('backgroundVideo');
+  const toggleButton = document.getElementById('musicToggleButton');
+
+  // Configura el video de fondo
+  videoElement.src = 'media/bannerNew.mp4'; // Cambia a la ruta de tu video único
+  videoElement.muted = true; // Inicia en silencio
+  videoElement.volume = 0.2; // Ajusta el volumen
+
+  let isMuted = true;
+
+  function toggleVideoAudio() {
+    isMuted = !isMuted;
+    videoElement.muted = isMuted;
+    toggleButton.innerHTML = isMuted ? "🔇" : "🔊";
+  }
+</script>
+
+
+<!-- <script>
   const music = document.getElementById('backgroundMusic');
   const musicButton = document.getElementById('musicToggleButton');
   let isPlaying = false;
@@ -2913,7 +2683,7 @@ Descubre el poder de la conexión técnica, comercial y territorial en Sudaméri
     music.currentTime = 5;
     music.play();
   });
-</script>
+</script> -->
 
 <!-- Nuevo Jquery que si cambia el color del navbar cuando despliego el dropdown -->
 <script>
@@ -3022,37 +2792,150 @@ window.addEventListener('scroll', function () {
 
 
 
-<!-- Codigo para videos de inicio -->
+<!-- Codigo para imagenes carrusel de inicio -->
 
-<script>
-  const video = document.getElementById('backgroundVideo');
-  const sources = ["media/bannerI.mp4", "media/banner.mp4", "media/banner3.mp4"];
-  let currentVideo = 0;
+<!-- <script>
+  const imageContainer = document.getElementById('backgroundImage');
+  const images = [
+    "media/espaciosConfinados/espaciosConfinadosEfectos.jpeg",
+    "media/espaciosConfinados/espaciosConfinadosWeb2.jpeg",
+     "media/espaciosConfinados/integracionEspaciosConfinados.jpeg",
+  ];
+  let currentImage = 0;
 
-  // Aseguramos que comience con el primer video del array
-  video.src = sources[currentVideo];
-  video.load();
-  video.play();
+  function changeImage() {
+    imageContainer.style.backgroundImage = `url('${images[currentImage]}')`;
+    currentImage = (currentImage + 1) % images.length;
+  }
 
-  video.addEventListener('ended', () => {
-    currentVideo = (currentVideo + 1) % sources.length;
-    video.src = sources[currentVideo];
-    video.load();
-    video.play();
-  });
+  // Cambia la imagen cada 5 segundos
+  changeImage(); // mostrar la primera
+  setInterval(changeImage, 5000);
 
-  video.addEventListener('timeupdate', () => {
-    if (video.src.includes('banner3.mp4') && video.currentTime >= 5) {
-      video.pause();
-      setTimeout(() => {
-        currentVideo = (currentVideo + 1) % sources.length;
-        video.src = sources[currentVideo];
-        video.load();
-        video.play();
-      }, 500);
+  function toggleMusic() {
+    const audio = document.getElementById("backgroundMusic");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
     }
-  });
-</script>
+  }
+</script> -->
+
+
+
+<!-- Codigo para mostrar imagenes y videos con el tiempo que yo quisiera en hero Section -->
+<!-- <script>
+  const imageContainer = document.getElementById('backgroundImage');
+  const videoElement = document.getElementById('backgroundVideo');
+
+
+  const media = [
+    { type: 'image', src: 'media/espaciosConfinados/espaciosConfinadosEfectos.jpeg', duration: 5000 },
+    { type: 'video', src: 'media/espaciosConfinados/videoLargo.mp4', duration: 26000 },
+    { type: 'video', src: 'media/espaciosConfinados/buzoBajando.mp4', duration: 3000 },
+      { type: 'video', src: 'media/espaciosConfinados/carrusel2.mp4', duration: 7000 },
+        { type: 'video', src: 'media/espaciosConfinados/carrusel3.mp4', duration: 7000 },
+          { type: 'video', src: 'media/espaciosConfinados/carrusel6.mp4', duration: 32000 },
+     { type: 'video', src: 'media/espaciosConfinados/plantasDesdeArriba.mp4', duration: 7000 },
+  
+    { type: 'image', src: 'media/espaciosConfinados/carrusel4.jpeg', duration: 5000 },
+    
+    { type: 'image', src: 'media/espaciosConfinados/carrusel5.jpeg', duration: 5000 },
+   
+  
+  ];
+  
+
+  let currentmedia = 0;
+  let mediaTimeout;
+
+  function changemedia() {
+    clearTimeout(mediaTimeout); // Limpiar el anterior timeout si existe
+
+    const item = media[currentmedia];
+
+    if (item.type === 'image') {
+      videoElement.style.display = 'none';
+      videoElement.pause();
+      imageContainer.style.display = 'block';
+      imageContainer.style.backgroundImage = `url('${item.src}')`;
+    } else if (item.type === 'video') {
+      imageContainer.style.display = 'none';
+      videoElement.style.display = 'block';
+      videoElement.src = item.src;
+      videoElement.play();
+    }
+
+    // Programar el próximo cambio según la duración
+    mediaTimeout = setTimeout(() => {
+      currentmedia = (currentmedia + 1) % media.length;
+      changemedia();
+    }, item.duration);
+  }
+
+  // Iniciar la secuencia
+  changemedia();
+
+  function toggleMusic() {
+    const audio = document.getElementById("backgroundMusic");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+</script> -->
+
+
+
+<!-- script anterior para mostrar imagenes y videos pero todos los mostraba solo 5 segundos -->
+<!-- <script>
+  const imageContainer = document.getElementById('backgroundImage');
+  const videoElement = document.getElementById('backgroundVideo');
+
+  const media = [
+    { type: 'image', src: 'media/espaciosConfinados/espaciosConfinadosEfectos.jpeg' },
+    { type: 'image', src: 'media/espaciosConfinados/carrusel4.jpeg' },
+    { type: 'video', src: 'media/espaciosConfinados/videoLargo.mp4' },
+    { type: 'image', src: 'media/espaciosConfinados/carrusel5.jpeg' },
+    { type: 'video', src: 'media/espaciosConfinados/plantaDesdeArriba.mp4' },
+    { type: 'video', src: 'media/espaciosConfinados/buzoBajando.mp4' },
+  ];
+
+  let currentmedia = 0;
+
+  function changemedia() {
+    const item = media[currentmedia];
+
+    if (item.type === 'image') {
+      videoElement.style.display = 'none';
+      videoElement.pause();
+      imageContainer.style.display = 'block';
+      imageContainer.style.backgroundImage = url('${item.src}');
+    } else if (item.type === 'video') {
+      imageContainer.style.display = 'none';
+      videoElement.style.display = 'block';
+      videoElement.src = item.src;
+      videoElement.play();
+    }
+
+    currentmedia = (currentmedia + 1) % media.length;
+  }
+
+  // Iniciar con el primer elemento
+  changemedia();
+  setInterval(changemedia, 5000); // Cambiar cada 5 segundos
+
+  function toggleMusic() {
+    const audio = document.getElementById("backgroundMusic");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+</script> -->
 
 
 <!-- <script>

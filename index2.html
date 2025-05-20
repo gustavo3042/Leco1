@@ -1,0 +1,3102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LECO LATAM</title>
+
+
+
+
+  <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.css" rel="stylesheet">
+
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- En el <head> -->
+ <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ 
+
+  <!-- Estilos Personalizados -->
+  <style>
+
+    
+    .hero {
+      background: #e0e0e0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .whatsapp-float img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .text-justify {
+    text-align: justify;
+    }
+
+    .noticia-img {
+        max-height: 250px;
+   /*  height: 200px; */
+    object-fit: cover;
+    width: 100%;
+    }
+
+    .card-img-top {
+  height: 200px; /* o el alto que prefieras */
+  object-fit: cover;
+    }
+
+    .img-custom {
+  max-width: 100%; /* Asegura que no se salga de la columna */
+  height: auto;
+  max-height: 400px; /* Ajusta este valor según lo que necesites */
+    }
+
+    .bottom-text {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+    }
+    
+    .logo {
+    height: 60px; /* Más grande que el típico 40px */
+    width: auto;
+    }
+
+
+    .hero-section {
+      background: #1e344f; /* Azul oscuro */
+      color: white;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0;
+    }
+    .hero-section::after {
+      content: "";
+      background: url('ruta-del-mapa.png') no-repeat center center;
+      background-size: cover;
+      opacity: 0.05;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .btn-primary {
+      background-color: #144e8a;
+      border-color: #144e8a;
+    }
+    .video-thumbnail {
+      position: relative;
+      cursor: pointer;
+    }
+    .video-thumbnail::after {
+      content: "▶";
+      font-size: 48px;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      padding: 10px 15px;
+    }
+
+
+
+
+/* Transición para efectos */
+.transition:hover {
+    transform: translateY(-8px);
+    transition: all 0.3s ease;
+}
+
+  .custom-footer{
+
+    background-color: #4a4a4a; /* un gris intermedio */
+}
+
+
+  #calendar {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.fc-toolbar-title {
+    text-transform: capitalize;
+  }
+
+
+   /* Cambiar color de fondo de los días */
+   .fc-daygrid-day {
+    background-color: #f8f9fa; /* gris clarito */
+  }
+
+  /* Cambiar color de los eventos */
+  .fc-event {
+    background-color: #0d6efd; /* azul Bootstrap */
+    border: none;
+    color: white;
+    padding: 2px 4px;
+    font-size: 0.85rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Cambiar color del header */
+  .fc-toolbar-title {
+    color: #0d6efd;
+    font-weight: bold;
+  }
+
+  .fc-button {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+  }
+
+  .fc-button:hover {
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+  }
+
+  /* "Hoy" resaltado */
+  .fc-day-today {
+    background-color: #ffeeba !important;
+  }
+
+
+.logos-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin; /* para Firefox */
+    scrollbar-color: #ccc transparent;
+  }
+
+  /* para Chrome, Edge, Safari */
+  .logos-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .logos-scroll::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+  }
+
+
+
+/* Zoom Nuestras noticias */
+
+.zoom-hover {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background-color: #0b1437; /* Color de fondo por defecto */
+  border-radius: 1rem;
+}
+
+.zoom-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+
+
+ .zoom-image-container {
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .zoom-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+.zoom-hover:hover .zoom-image {
+  transform: scale(1.1);
+}
+
+.card-img-overlay {
+  background: rgba(11, 20, 55, 0.6); /* Fondo semitransparente */
+  transition: background 0.3s ease;
+}
+
+.zoom-hover:hover .card-img-overlay {
+  background: rgba(11, 20, 55, 0.4); /* Un poco más claro en hover */
+}
+
+
+
+
+/* Nuevo navbar */
+
+.navbar-nav .dropdown:hover .dropdown-menu {
+      display: block;
+      margin-top: 0;
+    }
+
+
+
+
+
+    .dropdown-menu {
+    width: 100vw; 
+    left: 0;
+    right: auto;
+    padding: 20px;
+    border-radius: 10px; 
+    background: #ffffff;          /* Fondo blanco. */
+    position: absolute;           /* Se posiciona en relación al contenedor más cercano con posición relativa. */
+    opacity: 0;                   /* Inicialmente invisible (transparente). */
+    visibility: hidden;          /* También oculto para interacción (no clickable). */
+    transition: opacity 0.3s ease; /* Transición suave al mostrar (solo para opacidad). */
+
+    max-height: none;            /* Sin límite de alto, puede crecer libremente. */
+    height: 50vh;                /* Se ajusta para que ocupe la mitad de la altura de la ventana. */
+    overflow-y: auto;           /* Permite scroll si el contenido es muy largo */
+}
+
+    
+    .dropdown-menu h6 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .dropdown-menu p {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .dropdown-menu .col-md-4:hover {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      padding: 10px;
+    }
+    
+    .dropdown-menu .link-item {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    
+    .dropdown-menu .link-item:hover {
+      color: #007bff;
+    }
+    
+    .dropdown-menu .card {
+      border: none;
+      transition: transform 0.3s;
+    }
+    
+    .dropdown-menu .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .dropdown-menu .image-column img {
+      max-width: 100%;
+      height: auto;
+      width: 300px;
+      border-radius: 10px;
+    }
+    
+    /* Mejora para dispositivos moviles */
+    @media (max-width: 768px) {
+          .dropdown-menu {
+          width: auto;
+          left: 0;
+          right: auto;
+          padding: 20px;
+          }
+
+      .dropdown-menu .row {
+        flex-direction: column;
+      }
+      .dropdown-menu .image-column {
+        margin-top: 20px;
+        text-align: center;
+      }
+    }
+    
+    .navbar-hover-white {
+      background-color: #ffffff !important;
+      transition: background-color 0.3s;
+    }
+    
+ 
+    
+    .navbar {
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    
+    
+    .navbar-nav .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      margin-top: 0;
+    }
+
+    .navbar .nav-link {
+    transition: color 0.3s ease;
+  }
+
+
+  
+
+
+  .navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-brand,
+.navbar-scrolled .navbar-toggler-icon {
+  color: #000 !important;
+}
+
+
+.navbar-dark-bg {
+  background-color: rgba(0, 0, 0, 0.8) !important; /* negro transparente */
+}
+
+.navbar-dark-bg .nav-link,
+.navbar-dark-bg .navbar-brand,
+.navbar-dark-bg .navbar-toggler-icon {
+  color: white !important;
+}
+.navbar .nav-link {
+  color: #ffffff !important; /* blanco puro */
+}
+
+
+.navbar-scrolled {
+/*   background-color: rgba(255, 255, 255, 0.95) !important;
+  transition: background-color 0.3s ease, color 0.3s ease; */
+
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-initial .nav-link,
+.navbar-initial .navbar-brand,
+.navbar-initial .navbar-toggler-icon {
+  color: white !important;
+}
+
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-brand,
+.navbar-scrolled .navbar-toggler-icon {
+  color: #000 !important;
+}
+
+.navbar-initial .navbar-brand img {
+  filter: brightness(100%);
+  transition: filter 0.3s;
+}
+
+.navbar-scrolled .navbar-brand img {
+ /*  filter: brightness(0%) invert(1); */ /* o reemplaza el logo si tenés una versión dark */
+}
+
+
+/* Mostrar dropdown al hacer hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animación de aparición */
+ @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+ /*  to { opacity: 1; transform: translateY(0); } */
+} to {
+    opacity: 1;
+    transform: translate(-50%, 0%);
+  }
+ 
+
+
+/* Efectos para logos asociados */
+
+
+.dropdown-logos {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 600px; /* Aumentado */
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-logos .d-flex {
+  gap: 1rem;
+  justify-content: center;
+}
+
+.dropdown-logos img {
+  width: 70px;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.dropdown-logos img:hover {
+  transform: scale(1.1);
+}
+
+.position-relative:hover .dropdown-logos {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+/* 
+ @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0%);
+  }
+} */
+ 
+/*  .dropdown-logos {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+
+} 
+
+        
+
+
+.position-relative:hover .dropdown-logos {
+  display: block;
+}
+ */
+/* Para las imagenes del dropdow */
+.image-container {
+    position: relative;
+  }
+  
+  .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .image-container:hover .overlay {
+    opacity: 1;
+  }
+
+  .image-container img {
+    border-radius: 15px;
+  }
+  
+  h6 {
+    font-size: 1.1rem;
+  }
+
+  .text-muted {
+    font-size: 0.9rem;
+  }
+
+  .text-white {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+
+  /* Codigo para cambiar el codigo del navbar a blanco cuando se despliega el dropdown */
+
+  .navbar-white-bg {
+  background-color: #ffffff !important;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-white-bg .nav-link,
+.navbar-white-bg .navbar-brand,
+.navbar-white-bg .navbar-toggler-icon {
+  color: #000 !important;
+}
+  
+
+/* Navbar animacion */
+
+/* Animación de subrayado en los links */
+.custom-link {
+  position: relative;
+  display: inline-block;
+  color: inherit; /* mantiene el color del texto */
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.custom-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #28a745; /* color del subrayado, puedes cambiarlo */
+  transition: width 0.3s ease;
+}
+
+.custom-link:hover::after {
+  width: 100%;
+}
+
+/* Opcional: cambiar color al pasar el mouse */
+.custom-link:hover {
+  color: #28a745;
+}
+
+
+.directorio-card {
+  background-color: #fff; /* opcional: fondo blanco para homogeneidad */
+  height: 100%; /* asegura que todas tengan la misma altura */
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* sombra suave opcional */
+}
+
+/* .directorio-img {
+  width: 100%;
+  max-width: 200px;
+  height: 250px;
+  object-fit: cover;
+} */
+
+
+   .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+    }
+
+    .avatar:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+
+  </style>
+</head>
+<body>
+
+
+  
+ <!-- Navbar -->
+  
+  
+
+<!--   <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-transparent shadow-sm fixed-top"> -->
+  
+   <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top py-4">
+    <div class="container-fluid">
+    
+    
+      <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" href="#">
+        <img src="media/logo_transparente.png" alt="Logo" width="40" height="40">
+        LECO LATAM
+      </a>
+    
+   
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+    
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="#">Inicio</a></li>
+
+
+
+    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/quienesSomos.html">Quienes Somos</a></li>
+    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/nuestrosServicios.html">Nuestros Servicios</a></li>
+    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/comoTrabajamos.html">Proveedores</a></li>
+    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/noticias.html">Noticias</a></li>
+    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/directorio.html">Directorio</a></li>
+    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/revista.html">Revista</a></li>
+    <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="info/calendario.html">Congresos y Seminarios</a></li>
+  </ul>
+
+ 
+  <ul class="navbar-nav d-flex align-items-center gap-3">
+    <li class="nav-item">
+      <a class="btn btn-success d-flex align-items-center" href="#">
+        <i class="bi bi-calendar-event me-2"></i> Agenda tu Reunión
+      </a>
+
+    </li>
+   
+    <li class="nav-item d-flex align-items-center gap-2">
+      <img src="media/españa.png" width="24" alt="Español" class="lang-icon">
+      <img src="media/eeuu.png" width="24" alt="English" class="lang-icon">
+    </li>
+  </ul>
+</div>
+
+
+
+    </div>
+  </nav> 
+  
+  
+  
+
+
+      
+
+  <!-- ====================== HERO SECTION ====================== -->
+
+
+
+  <section class="hero position-relative overflow-hidden py-5" style="height: 100vh;">
+    <video id="backgroundVideo" autoplay muted playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover">
+        <source src="media/bannerI.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+    </video>
+  
+   
+  
+    <audio id="backgroundMusic" preload="auto">
+        <source src="media/musicaArabe.mp3" type="audio/mpeg">
+        Tu navegador no soporta el audio.
+    </audio>
+  
+    <!-- Capa de oscurecimiento -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.5;"></div>
+  
+    <!-- Contenido -->
+    <div class="position-relative z-1 text-white p-5 text-center">
+        <h1 class="display-4 fw-bold text-uppercase mb-3">
+            <span style="display: block;">Conectamos Sudamérica con</span>
+            soluciones que no se detienen
+        </h1>
+        <p class="lead fw-bold mb-4">Ingeniería | Inversión | Territorio | Resultados Reales</p>
+  
+        <div class="mt-3 d-flex justify-content-center gap-3 flex-wrap">
+            <a href="Integracion.html" class="btn btn-warning btn-lg text-dark fw-bold">ÚNETE AL ECOSISTEMA</a>
+            <button id="musicToggleButton" class="btn btn-outline-light btn-lg fw-bold" onclick="toggleMusic()">🔊</button>
+        </div>
+    </div>
+  </section>
+  
+ 
+  
+
+
+
+<!-- <script> 
+  const music1 = document.getElementById('backgroundMusic1');
+  const music2 = document.getElementById('backgroundMusic2');
+  const musicToggleButton = document.getElementById('musicToggleButton');
+
+  // Iniciar la primera canción
+  let isMusicPlaying = true; // Variable para controlar el estado de la música
+
+  music1.play();
+
+  // Cambiar a la segunda canción cuando la primera termine
+  music1.addEventListener('ended', () => {
+    music2.play();
+  });
+
+  music2.addEventListener('ended', () => {
+    music1.play();
+  });
+
+  // Función para alternar el sonido (pausar y reanudar)
+  function toggleMusic() {
+    if (isMusicPlaying) {
+      music1.pause();
+      music2.pause();
+      musicToggleButton.textContent = '🔇'; // Cambiar icono a apagado
+    } else {
+      music1.play();
+      musicToggleButton.textContent = '🔊'; // Cambiar icono a encendido
+    }
+    isMusicPlaying = !isMusicPlaying; // Alternar el estado de la música
+  }
+</script> -->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <!-- ====================== MAIN CONTENT ====================== -->
+  <main class="container my-5">
+
+    <!-- === Quiénes Somos === -->
+
+   <section class="py-5" data-aos="fade-up">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Texto -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h2 class="fw-bold mb-4">Conectamos <br>Soluciones Reales <br>para América Latina</h2>
+          <p class="mb-4">
+            Somos un ecosistema empresarial que nació en el sur de Chile para transformar necesidades reales en soluciones sostenibles.
+            Conectamos empresas, personas y gobiernos en toda Sudamérica. Nuestra historia es de innovación, ingeniería y compromiso.
+          </p>
+          <a href="#" class="btn btn-outline-primary">Conoce la historia contada por su fundador.</a>
+        </div>
+    
+        <!-- Video o Imagen -->
+        <div class="col-lg-6 text-center">
+          <div class="position-relative">
+            <img src="media/fundador.png" alt="Ecosistema LECO LATAM" class="img-fluid rounded">
+            <a href="https://www.youtube.com/watch?v=_pTjiuwxYvo" class="position-absolute top-50 start-50 translate-middle">
+              <i class="bi bi-play-circle-fill" style="font-size: 4rem; color: white;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+    
+
+    
+      
+
+    <!-- === Misión, Visión, Valores === -->
+  
+    <section class="py-5 my-5 text-center" data-aos="fade-up">
+        <div class="container">
+          <h2 class="mb-5">Nuestra Identidad y Servicios</h2>
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <i class="bi bi-flag-fill" style="font-size: 2rem; color: #ff6600;"></i>
+              <h5 class="mt-3">Misión</h5>
+              <p class="text-muted">
+                Conectar personas y gobiernos mediante integración tecnológica en Sudamérica.
+              </p>
+            </div>
+            <div class="col-md-4 mb-4">
+              <i class="bi bi-eye-fill" style="font-size: 2rem; color: #007bff;"></i>
+              <h5 class="mt-3">Visión</h5>
+              <p class="text-muted">
+                Ser la empresa líder en soluciones técnicas integradas y sostenibles en la región.
+              </p>
+            </div>
+            <div class="col-md-4 mb-4">
+              <i class="bi bi-people-fill" style="font-size: 2rem; color: #00b894;"></i>
+              <h5 class="mt-3">Valores</h5>
+              <p class="text-muted">
+                Actuar con integridad y compromiso, creando valor sostenible para los grupos de interés.
+              </p>
+            </div>
+          </div>
+      
+       
+        
+
+     
+
+          <div class="mt-5" data-aos="fade-up">
+            <div class="card shadow-sm border-0">
+              <div class="card-body">
+            <h5>
+              <i class="bi bi-rocket-takeoff-fill text-primary me-2"></i>
+              Soluciones Integradas <a href="#" class="text-primary text-decoration-none fw-semibold">LECO LATAM</a>
+            </h5>
+            <p class="text-muted">
+              Acompañamos cada fase de su proyecto, ofreciendo tecnología y valor estratégico.
+            </p>
+          </div>
+          </div>
+          </div>
+
+        </div>
+      </section>
+
+      
+    <!-- === Nuestros Servicios === -->
+
+    <section class="container py-5 my-5" data-aos="fade-up">
+      
+      <h2 class="text-center fw-bold text-black mb-4">Nuestros Servicios</h2>
+      <p class="text-center fw-bold text-muted mb-5 fs-5">Potenciamos tu proyecto o negocio en cada etapa con un portafolio integral de soluciones.</p>
+    
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+    
+  
+        <div class="col">
+          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+            <div class="zoom-image-container">
+              <img src="media/tecnologia_no_invasiva.jpeg" class="card-img-top zoom-image" alt="Networking">
+            </div>
+            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+              <h5 class="card-title fw-bold fs-4">Ingenieria No Invasiva</h5>
+              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+            </div>
+          </div>
+        </div>
+    
+   
+  
+        <div class="col">
+          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+            <div class="zoom-image-container">
+              <img src="media/segundo_servicio.jpeg" class="card-img-top zoom-image" alt="Networking">
+            </div>
+            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+              <h5 class="card-title fw-bold fs-4">Ejecución Técnica y Operativa</h5>
+              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+            </div>
+          </div>
+        </div>
+    
+  
+  
+        <div class="col">
+          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+            <div class="zoom-image-container">
+              <img src="media/inversion_estructurada3.jpeg" class="card-img-top zoom-image" alt="Networking">
+            </div>
+            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+              <h5 class="card-title fw-bold fs-4">Inversión Estructurada</h5>
+              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+            </div>
+          </div>
+        </div>
+  
+        
+    
+    
+  
+        
+        <div class="col">
+          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+            <div class="zoom-image-container">
+              <img src="media/inteligenciaComercial7.jpeg" class="card-img-top zoom-image" alt="Networking">
+            </div>
+            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+              <h5 class="card-title fw-bold fs-4">Inteligencia Comercial</h5>
+              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+            </div>
+          </div>
+        </div>
+    
+     
+  
+        <div class="col">
+          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+            <div class="zoom-image-container">
+              <img src="media/networking2.png" class="card-img-top zoom-image" alt="Networking">
+            </div>
+            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+              <h5 class="card-title fw-bold fs-4">Visibilidad y Networking</h5>
+              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+            </div>
+          </div>
+        </div>
+    
+     
+  
+        <div class="col">
+          <div class="card zoom-hover overflow-hidden border-0 rounded-4 text-white text-center">
+            <div class="zoom-image-container">
+              <img src="media/redDeFranquicias7.jpeg" class="card-img-top zoom-image" alt="Networking">
+            </div>
+            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+              <h5 class="card-title fw-bold fs-4">Visibilidad y Networking</h5>
+              <a href="#" class="text-white fw-semibold text-decoration-none">Saber más →</a>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </section>
+
+
+      
+      <!-- Nuestro modelo de trabajo -->
+  
+  <section class="py-5 my-5 bg-light text-center" data-aos="fade-up">
+    <div class="container">
+
+      <h2 class="text-center fw-bold text-black mb-4">Nuestro Modelo de Trabajo</h2>
+      <p class="text-center fw-bold text-muted mb-5 fs-5">Un proceso estructurado en 4 fases para garantizar resultados medibles y sostenibles.</p>
+<!-- 
+      <h2 class="mb-4 text-black">Nuestro Modelo de Trabajo</h2>
+      <p class="mb-5 fw-bold">Un proceso estructurado en 4 fases para garantizar resultados medibles y sostenibles.</p> -->
+  
+      <div class="row gy-5">
+        
+        <div class="col-12 col-md-3">
+          <div class="p-4 bg-white shadow rounded-4 h-100 transition" style="border-top: 5px solid #0d6efd;">
+            <div class="mb-3">
+              <i class="bi bi-search fs-1 text-primary"></i>
+            </div>
+            <div class="fw-bold mb-2 fs-5">1. Diagnóstico Inicial</div>
+            <p class="text-muted small">Análisis profundo de necesidades, oportunidades y desafíos.</p>
+          </div>
+        </div>
+        
+        <div class="col-12 col-md-3">
+          <div class="p-4 bg-white shadow rounded-4 h-100 transition" style="border-top: 5px solid #198754;">
+            <div class="mb-3">
+              <i class="bi bi-people fs-1 text-success"></i>
+            </div>
+            <div class="fw-bold mb-2 fs-5">2. Diseño de Solución</div>
+            <p class="text-muted small">Co-creación de estrategias y planes de acción a medida.</p>
+          </div>
+        </div>
+        
+        <div class="col-12 col-md-3">
+          <div class="p-4 bg-white shadow rounded-4 h-100 transition" style="border-top: 5px solid #ffc107;">
+            <div class="mb-3">
+              <i class="bi bi-rocket fs-1 text-warning"></i>
+            </div>
+            <div class="fw-bold mb-2 fs-5">3. Ejecución</div>
+            <p class="text-muted small">Implementación eficiente con equipos expertos y aliados estratégicos.</p>
+          </div>
+        </div>
+        
+        <div class="col-12 col-md-3">
+          <div class="p-4 bg-white shadow rounded-4 h-100 transition" style="border-top: 5px solid #dc3545;">
+            <div class="mb-3">
+              <i class="bi bi-bullseye fs-1 text-danger"></i>
+            </div>
+            <div class="fw-bold mb-2 fs-5">4. Posicionamiento y Expansión</div>
+            <p class="text-muted small">Consolidación de resultados y búsqueda de nuevas oportunidades de crecimiento.</p>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+ 
+  
+      
+
+    <!-- Red leco latam -->
+
+
+ 
+    <section class="py-5 my-5 bg-light" data-aos="fade-up">
+      <div class="container text-center">
+
+    
+    
+
+        <div class="container text-center my-5">
+          
+        <!--   <h2 class="mb-3">Nuestra Red en América Latina</h2>
+          <p class="text-muted fw-bold">Conectamos oportunidades, empresas y proyectos en todo el continente.</p> -->
+
+          <h2 class="text-center fw-bold text-black mb-4">Nuestra Red en América Latina</h2>
+      <p class="text-center fw-bold text-muted mb-5 fs-5">Conectamos oportunidades, empresas y proyectos en todo el continente.</p>
+          
+          <ul class="d-flex flex-wrap justify-content-center gap-3 mt-4" role="list" style="list-style: none; padding: 0;">
+             <li role="listitem">
+              <a href="espaciosConfinados/index.html" class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2 text-decoration-none">
+                Espacios Confinados
+              </a>
+            </li>
+            <li role="listitem">
+              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Dragado</span>
+            </li>
+            <li role="listitem">
+              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Construcción</span>
+            </li>
+            <li role="listitem">
+              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Maestranza</span>
+            </li>
+            <li role="listitem">
+              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Transporte Lodos</span>
+            </li>
+            <li role="listitem">
+              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Termofusión</span>
+            </li>
+            <li role="listitem">
+              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Empresas Aliadas</span>
+            </li>
+            <li role="listitem">
+              <span class="badge rounded-pill bg-primary text-white fs-5 px-4 py-2">Representaciones</span>
+            </li>
+          </ul>
+        </div>
+    
+        <!-- Mapa y Clientes -->
+        <div class="row align-items-center gy-5">
+          <!-- Mapa -->
+          <div class="col-md-6" data-aos="fade-right">
+            <div class="mx-auto" style="max-width: 100%; overflow: hidden;">
+              <img src="media/mapa.png" alt="Mapa de América Latina" class="img-fluid" style="object-fit: contain;">
+            </div>
+          </div>
+    
+          <!-- Clientes -->
+          <div class="col-md-6 text-md-start text-center" data-aos="fade-left">
+
+          <h2 class="fw-semibold text-black mb-4">Clientes:</h2>
+<!--             <p class="text-center text-muted mb-5 fs-5">Un proceso estructurado en 4 fases para garantizar resultados medibles y sostenibles.</p> -->
+          <!--   <h5 class="mb-4 fw-bold ">Clientes</h5> -->
+    
+            <!-- Proyecto principal -->
+            <div class="d-flex align-items-start mb-4">
+            <!--   <img src="media/cl.png" alt="Bandera de Chile" width="24" height="24" class="me-2 mt-1"> -->
+              <div>
+               <!--  <strong>Proyecto de Infraestructura Portuaria</strong> - Chile<br> -->
+               <!--  <small class="text-muted">Clientes</small> -->
+              </div>
+            </div>
+    
+            <!-- Logos de empresas -->
+
+         <!--    <div style="max-height: 400px; overflow-y: auto;"> -->
+
+          <div class="logos-scroll">
+            <div class="row g-3">
+              <!-- Aquí comienzan los logos -->
+              <!-- Reutilizamos la misma estructura para cada logo -->
+              <!-- Para mayor facilidad, si tienes muchos logos, puedes usar un loop en algún backend -->
+              
+              <!-- Ejemplo de un logo -->
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguas_cha_ar_sa_logo.jpg" alt="Aguas Chañar" class="img-fluid" style="max-height: 60px;">
+              </div>
+    
+          <!--  Essal   <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguas_delValle.png" alt="Aguas del Valle" class="img-fluid" style="max-height: 60px;">
+              </div>
+     -->
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/tingiriricaEnergia.jpg" alt="Aguas Chañar" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguasAraucania.jpg" alt="Aguas Araucanía" class="img-fluid" style="max-height: 60px;">
+              </div>
+    
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguasDecima.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguasMagallanes.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguasPatagonia.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguasSanPedro.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/cial2.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/copec.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+            <!-- dragado   <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/dragadoChile.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/enap.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+             <!-- ergomedica <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/ergomedica.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+             <!-- esmax  <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/esmax.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/essal.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/esval.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/gasco.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/gQRsEgnY_400x400.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/Logo_Aguas_Andinas_(Vertical).jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <!-- msMaestranza <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/maestranzayServiciosMs.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/mciTermofusion.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/metrogas.webp" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <!--MindMetal <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/mindMetal.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/NuevoSur.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/pipehunter.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+             <!-- progyter  <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/progyter.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/shell.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/smapa.png" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+             <!-- termoinox  <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/termoInox.gif" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/terpel.jpg" alt="Icono 2" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+             
+              <!-- veolia <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/veolia.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguaAltiplano.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguasChañar.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguasAntofagasta.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sularis.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguasCordillera.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aguasManquehue.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+            <!-- LATAM AIRLINES   <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/latamAirlines.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/epas.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/compañiaSudamericanaDeVapores.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+            <!--   <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/metroSantiago.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/bancoSantander.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/empresaNaviera.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sociedadMinera.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/celulosaArauco.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/masisa.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/madeco.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sigdoKoppers.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/grupoNueva.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/SQM.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/enaex.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/agrosuper.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/colun.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/nestle.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/cocaColaAndina.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/pepsico.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/ccu.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sedapal.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aysa.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/epm.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/itaipu.svg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/eletrobras.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+            <!-- enel   <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/enel.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div> -->
+
+                 <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/EnelChile.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div> 
+
+              
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/bancoDeChile.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div> 
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/bancoEstado.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div> 
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/colbun.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/LogoElectroPeru.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/mowi.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aquaChile.webp" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/cermaq.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/blumar.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/salmonesAustral.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/codelco.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/antofagastaMinerals.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/vale.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/angloAmerican.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/mineraescondida.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/ecopetrol.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/ypf.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sedapal.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/petroamazonas.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/petroperu.webp" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/pdvsa.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/enapSipetrol.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/ancap.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/pampaEnergia.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/geopark.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/pluspetrol.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/tecpetrol.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/vistaEnergy.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/shuanstiger.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/halliburton.gif" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sinopec.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/petrotal.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/GranTierraEnergy.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/amerisur.webp" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/frontera.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/bhp.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/losPelambres.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/barrick.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/yanacocha.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/chinaldo.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/buenaventura.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/hoshild.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/heroShogang.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/brasilMineral.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/lasBambas.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/samarco.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/mrn.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/msc.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/lithiumArgentina.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/orocobre.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/mineraAguilar.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/glencore.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/firstUQuantum.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/panAmerica.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/newmont.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/albemarle.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/mineralIRL.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/arcadiumLithium.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/freemaq.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/edimoa.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/metsoOutotec.gif" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sandvik.webp" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/finningCat.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/bucyrus.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/dsi.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/belfi.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/salfacorp.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sk.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/me.webp" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/ferrovial.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/bechtel.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/fluor.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/jjc.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/pavco.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/grañaMontero.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/meco.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/andradeGutierrez.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/novonor.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/endratech.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/chevron.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/cenit.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/hocol.webp" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/equion.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/pemex.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/ypfb.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/acueducto.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sapal.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/conagua.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/collahuasi.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/antamina.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/salesDeJujuy.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/comibol.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/mineraSanCristobal.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/grupoMexico.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/fresnillo.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/peñoles.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/forestalAn.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/forestalMinico.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/forestalTrillium.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/arauco.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/aqualogy.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/inarsa.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/ambipar.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/enami.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/cap.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/firstSolar.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/edfRew.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/sonnedix.png" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/inergex.webp" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/gasAtacama.jpg" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+              <div class="col-4 col-sm-3 col-md-2 text-center">
+                <img src="media/Empresas/statkraft.webp" alt="Veolia" class="img-fluid" style="max-height: 60px;">
+              </div>
+            </div>
+            </div>
+    
+            <!-- Botón -->
+          <!--   <div class="mt-4">
+              <a href="#" class="btn btn-outline-primary">Ver más proyectos →</a>
+            </div> -->
+    
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<section class="py-5 my-5 bg-light">
+  <div class="container">
+    <div class="row align-items-start">
+      
+      <!-- Información de Conexión -->
+      <div class="col-md-6 mb-4" data-aos="fade-right">
+
+
+       
+
+ 
+        <h2 class="fw-bold">Conecta con LECO LATAM</h2>
+
+        <p class="text-muted">✉️ Suscríbete a la Revista LECO Latam
+Descubre el poder de la conexión técnica, comercial y territorial en Sudamérica.</p>
+<p class="text-muted text-justify">Accede a casos reales, proyectos innovadores, oportunidades de inversión y entrevistas con líderes que están transformando la región.</p>
+<p class="text-muted text-justify">📰 Sé parte del ecosistema que no solo informa… ejecuta.</p>
+
+<p class="text-muted text-justify">🔗 [Suscribirme ahora] </p>
+<!--         <p class="text-muted">Sé parte de nuestra red de empresas, expertos e instituciones que impulsan el desarrollo sostenible</p>
+       <p class="text-muted text-justify">LECO LATAM es una plataforma que conecta técnica, inversión y territorio para ejecutar proyectos reales en Sudamérica.
+        Nuestra revista digital muestra casos de éxito, oportunidades de inversión y tendencias clave en ingeniería y desarrollo regional.
+        Es una ventana al ecosistema colaborativo que está transformando la región con soluciones concretas y sostenibles.</p> -->
+        
+        <div class="row">
+          <div class="col-6">
+            <h5 class="fw-bold">¿Quiénes pueden unirse?</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="bi bi-building-check me-2 text-primary"></i> Empresas Técnicas</li>
+              <li class="mb-2"><i class="bi bi-bank me-2 text-primary"></i> Gobiernos y Entidades</li>
+              <li class="mb-2"><i class="bi bi-coin me-2 text-primary"></i> Inversionistas y Fondos</li>
+              <li class="mb-2"><i class="bi bi-person-badge me-2 text-primary"></i> Consultores Especializados</li>
+            </ul>
+          </div>
+          
+          <div class="col-6">
+            <h5 class="fw-bold">Beneficios Destacados:</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="bi bi-briefcase me-2 text-primary"></i> Oportunidades de negocio exclusivas</li>
+              <li class="mb-2"><i class="bi bi-people me-2 text-primary"></i> Networking de alto impacto</li>
+              <li class="mb-2"><i class="bi bi-globe me-2 text-primary"></i> Visibilidad regional e internacional</li>
+              <li class="mb-2"><i class="bi bi-graph-up-arrow me-2 text-primary"></i> Acceso a inteligencia de financiamiento</li>
+            </ul>
+          </div>
+        </div>
+
+        <a href="#" class="btn btn-primary mt-3">Conocer los requisitos</a>
+
+      
+
+      </div>
+
+      <!-- Formulario de Integración -->
+      <div class="col-md-6" data-aos="fade-left">
+        <form 
+          class="p-5 shadow-lg rounded-4 bg-white needs-validation" 
+          action="/ruta-de-tu-endpoint" 
+          method="POST" 
+          novalidate
+        >
+          <h3 class="mb-4 text-center fw-bold text-primary">Formulario Revista</h3>
+      
+          <div class="mb-3">
+            <label for="nombre" class="form-label fw-semibold">Tu Nombre</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text">
+                <i class="bi bi-person-fill"></i>
+              </span>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="nombre" 
+                name="nombre" 
+                placeholder="Nombre completo" 
+                required
+              >
+              <div class="invalid-feedback">
+                Por favor ingresa tu nombre.
+              </div>
+            </div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="correo" class="form-label fw-semibold">Correo Electrónico</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text">
+                <i class="bi bi-envelope-fill"></i>
+              </span>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="correo" 
+                name="correo" 
+                placeholder="correo@ejemplo.com" 
+                required
+              >
+              <div class="invalid-feedback">
+                Por favor ingresa un correo válido.
+              </div>
+            </div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="asunto" class="form-label fw-semibold">Asunto</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text">
+                <i class="bi bi-chat-dots-fill"></i>
+              </span>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="asunto" 
+                name="asunto" 
+                placeholder="Tema del mensaje" 
+                required
+              >
+              <div class="invalid-feedback">
+                El asunto es obligatorio.
+              </div>
+            </div>
+          </div>
+      
+          <div class="mb-3">
+            <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text">
+                <i class="bi bi-pencil-square"></i>
+              </span>
+              <textarea 
+                class="form-control" 
+                id="mensaje" 
+                name="mensaje" 
+                placeholder="Escribe tu mensaje aquí..." 
+                style="height: 150px;" 
+                required
+              ></textarea>
+              <div class="invalid-feedback">
+                No olvides escribir tu mensaje.
+              </div>
+            </div>
+          </div>
+      
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg mt-3">
+              <i class="bi bi-send-fill me-2"></i>Enviar Mensaje
+            </button>
+          </div>
+        </form>
+      </div>
+      
+
+       
+      </div>
+
+    </div>
+  
+</section>
+
+
+
+
+
+<section class="container my-5 py-5" data-aos="fade-up">
+  <h3 class="fw-bold text-center text-black mb-4">ACTUALIDAD LECO LATAM NOTICIAS</h3>
+  <p class="text-center fw-bold">Descubre las últimas novedades, casos de éxito y tendencias del sector.</p>
+
+  <div id="noticias-container" class="row">
+
+    <div class="noticia-group row">
+    <!-- NOTICIA 1 -->
+    <div class="col-md-4 noticia-item d-flex">
+      <div class="card mb-4 shadow-sm h-100 w-100">
+        <img src="media/noticias66.jpg" class="card-img-top">
+        <div class="card-body d-flex flex-column">
+          <small class="text-muted">INVERSIÓN Y FINANCIAMIENTO</small>
+          <h5 class="card-title">Innovación y sostenibilidad: el futuro de la minería en Perú y Chile</h5>
+          <p class="card-text">La implementación de nuevas herramientas digitales y de protocolos internacionales en las operaciones y desarrollo.</p>
+          <a href="noticia6.html" class="btn btn-link p-0 mt-auto">Leer más →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTICIA 2 -->
+    <div class="col-md-4 noticia-item d-flex">
+      <div class="card mb-4 shadow-sm h-100 w-100">
+        <img src="media/noticias7.jpg" class="card-img-top">
+        <div class="card-body d-flex flex-column">
+          <small class="text-muted">INGENIERÍA NO INVASIVA</small>
+          <h5 class="card-title">Startup liderada por ingenieros UdeC logra convertir cámaras de seguridad en dispositivos inteligentes</h5>
+          <p class="card-text">La empresa SecurityAI creó un software que permite el procesamiento de imágenes en tiempo real, eliminando falsas alarmas y permitiendo la generación de alertas precisas y contextualizadas.</p>
+          <a href="noticia7.html" class="btn btn-link p-0 mt-auto">Leer más →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTICIA 3 -->
+    <div class="col-md-4 noticia-item d-flex">
+      <div class="card mb-4 shadow-sm h-100 w-100">
+        <img src="media/noticia9.jpeg" class="card-img-top">
+        <div class="card-body d-flex flex-column">
+          <small class="text-muted">INVERSIÓN</small>
+          <h5 class="card-title">Chile acumuló US$ 2.311 millones en inversión extranjera en los dos primeros meses de 2025</h5>
+          <p class="card-text">De acuerdo al análisis realizado por InvestChile, el componente más importante del flujo de IED fue la reinversión de utilidades, con un registro de US$1.796 millones.</p>
+          <a href="noticia8.html" class="btn btn-link p-0 mt-auto">Leer más →</a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    
+    <div class="noticia-group row central">
+
+
+      <div class="col-md-4 noticia-item d-flex">
+        <div class="card mb-4 shadow-sm h-100 w-100">
+          <div class="ratio ratio-16x9 card-img-top">
+             <iframe src="https://www.youtube.com/embed/NsCgjaii8PA?list=TLGGGW_hoBqfEDwyNzA0MjAyNQ" title="YouTube video" allowfullscreen></iframe> 
+        
+          </div>
+          <div class="card-body d-flex flex-column">
+            <small class="text-muted">INGENIERÍA NO INVASIVA</small>
+            <h5 class="card-title">Optimiza tus lagunas sin detener procesos: Tecnología y eficiencia con Consorcio LECO</h5>
+            <p class="card-text">Ofrecemos tecnología innovadora y una cultura de mejora continua, enfocada en optimizar tus procesos con resultados reales.</p>
+            <a href="noticia2.html" class="btn btn-link p-0 mt-auto">Ver más →</a>
+          </div>
+        </div>
+      </div>
+
+<div class="col-md-4 noticia-item d-flex">
+  <div class="card mb-4 shadow-sm h-100 w-100">
+    <div class="ratio ratio-16x9 card-img-top">
+       <iframe src="https://www.youtube.com/embed/UZ9fEvmTeG4?list=TLGGn7sNmGxEVu8yNzA0MjAyNQ" title="YouTube video" allowfullscreen></iframe> 
+    
+    </div>
+    <div class="card-body d-flex flex-column">
+      <small class="text-muted">INGENIERÍA NO INVASIVA</small>
+      <h5 class="card-title">Limpieza de estanques sin interrupciones: Innovación y eficiencia con Consorcio LECO</h5>
+      <p class="card-text">Descubre las novedades y la visión global de LECO LATAM en esta presentación especial.</p>
+      <a href="noticia1.html" class="btn btn-link p-0 mt-auto">Ver más →</a>
+    </div>
+  </div>
+</div>
+
+<!-- NOTICIA 8 - VIDEO YOUTUBE -->
+<div class="col-md-4 noticia-item d-flex">
+  <div class="card mb-4 shadow-sm h-100 w-100">
+    <div class="ratio ratio-16x9 card-img-top">
+      <iframe src="https://www.youtube.com/embed/0tTRO24T-fY" title="YouTube video" allowfullscreen></iframe>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <small class="text-muted">CONFERENCIA</small>
+      <h5 class="card-title">Presentación internacional</h5>
+      <p class="card-text">Descubre las novedades y la visión global de LECO LATAM en esta presentación especial.</p>
+      <a href="#" class="btn btn-link p-0 mt-auto">Ver más →</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+    </div>
+
+    <div class="noticia-group row d-none">
+
+      <!-- NOTICIA 4 -->
+      <div class="col-md-4 noticia-item d-flex">
+        <div class="card mb-4 shadow-sm h-100 w-100">
+          <img src="media/noticia10.webp" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <small class="text-muted">INVERSIÓN Y FINANCIAMIENTO</small>
+            <h5 class="card-title">Ley marco de autorizaciones sectoriales: despejan principio de tramitación paralela</h5>
+            <p class="card-text">La Comisión de Economía del Senado aprobó una serie de artículos de la iniciativa y espera despacharla a su par de Hacienda la próxima semana.</p>
+            <a href="noticia9.html" class="btn btn-link p-0 mt-auto">Leer más →</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- NOTICIA 5 -->
+      <div class="col-md-4 noticia-item d-flex">
+        <div class="card mb-4 shadow-sm h-100 w-100">
+          <img src="media/noticias/noticiaPagina25.avif" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <small class="text-muted">PERMISIOLOGÍA</small>
+            <h5 class="card-title">Gobierno y oposición afinan acuerdo en cuatro materias en día clave para proyecto en el Senado</h5>
+            <p class="card-text"><p>Gobierno y la oposición están cerca de alcanzar un acuerdo en cuatro áreas clave del proyecto de reforma de permisos sectoriales, que busca agilizar la inversión en Chile. Tras seis meses de debate, la Comisión de Economía del Senado podría aprobar y enviar el proyecto a la siguiente etapa legislativa en una sesión programada para este martes.</p></p>
+            <a href="noticia4.html" class="btn btn-link p-0 mt-auto">Leer más →</a>
+          </div>
+        </div>
+      </div>
+  
+    
+
+
+        <!-- NOTICIA 6 -->
+        <div class="col-md-4 noticia-item d-flex">
+          <div class="card mb-4 shadow-sm h-100 w-100">
+            <img src="media/noticia6.avif" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+              <small class="text-muted">PLATAFORMA DE CONEXIÓN OPERACIONAL</small>
+              <h5 class="card-title">Digitalización y sostenibilidad: el futuro de las cadenas de suministro en Chile y Perú</h5>
+              <p class="card-text"><p>En un contexto global marcado por la escasez de recursos y el cambio climático, Chile y Perú avanzan hacia cadenas de suministro más sostenibles, integrando tecnologías digitales para optimizar costos, reducir el impacto ambiental y fortalecer la resiliencia operativa.</p>
+              <a href="noticia5.html" class="btn btn-link p-0 mt-auto">Leer más →</a>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+
+
+
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <button id="prev-btn" class="btn btn-outline-primary me-2" disabled>Anterior</button>
+    <button id="next-btn" class="btn btn-outline-primary">Siguiente</button>
+  </div>
+
+
+</section>
+  <!-- Directorio  data-aos="fade-up"-->
+
+
+  
+
+
+<section class="my-3 py-3" data-aos="fade-up" data-aos-duration="100" data-aos-offset="100">
+  <div class="container">
+    <div class="row mb-5"></div>
+
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <h3 class="fw-bold">Nuestro Directorio</h3>
+      </div>
+    </div>
+
+    <div class="row text-center">
+
+
+      <div class="col-md-3 mb-4">
+        <div class="directorio-card h-100 d-flex flex-column align-items-center text-center p-3">
+          <img src="media/Directorio/LuisCarcamo.avif" alt="Luis Cárcamo" class="img-fluid rounded mb-3 directorio-img">
+          <h5 class="fw-bold mb-0">Luis Cárcamo</h5>
+          <p class="text-muted">CEO - PRESIDENTE CONSORCIO LECO</p>
+        </div>
+      </div>
+
+
+      <div class="col-md-3 mb-4">
+        <div class="directorio-card h-100 d-flex flex-column align-items-center text-center p-3">
+          <img src="media/Directorio/AndresInzunza.avif" alt="Luis Cárcamo" class="img-fluid rounded mb-3 directorio-img">
+          <h5 class="fw-bold mb-0">Andrés Inzunza</h5>
+          <p class="text-muted">GERENTE COMERCIAL</p>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="directorio-card h-100 d-flex flex-column align-items-center text-center p-3">
+          <img src="media/Directorio/NicoleSalinas.avif" alt="Luis Cárcamo" class="img-fluid rounded mb-3 directorio-img">
+          <h5 class="fw-bold mb-0">Nicole Salinas</h5>
+          <p class="text-muted">GERENTA DE EFICIENCIA OPERACIONAL</p>
+        </div>
+      </div>
+      
+      <div class="col-md-3 mb-4">
+        <div class="directorio-card h-100 d-flex flex-column align-items-center text-center p-3">
+          <img src="media/Directorio/JovannaPezoa.avif" alt="Luis Cárcamo" class="img-fluid rounded mb-3 directorio-img">
+          <h5 class="fw-bold mb-0">Jovanna Pezoa</h5>
+          <p class="text-muted">GERENTA DE FINANZAS</p>
+        </div>
+      </div>
+
+   
+
+    </div>
+  </div>
+</section>
+
+
+  
+  <!-- Asegúrate de tener Bootstrap Icons si quieres los íconos -->
+
+  
+
+
+ 
+
+
+  <section class="text-center my-2 py-5 bg-white" data-aos="fade-up" data-aos-duration="100" data-aos-offset="100">
+    <h2 class="mb-5 fw-bold">Asociados a</h2>
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        
+        <!-- IRADE con hover desplegable -->
+        <div class="col-6 col-md-3 mb-4 position-relative">
+
+          <a href="https://irade.cl/" target="_blank">
+            <img src="media/l_irade.png" class="img-fluid w-50 transition" alt="Logo IRADE">
+          </a>
+          <!-- Panel oculto que se muestra al hacer hover -->
+          <div class="dropdown-logos bg-light p-3 rounded shadow-lg">
+            <h6 class="fw-bold mb-3">Empresas asociadas a IRADE</h6>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+
+              <a href="https://www.arauco.cl/" target="_blank">
+                <img src="media/irade/Arauco_Logo.svg.png" alt="Arauco" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://www.orizon.cl/" target="_blank">
+              <img src="media/irade/orizon.png" alt="orizon" class="img-fluid" style="width: 60px;">
+               </a>
+
+               <a href="https://www.aitue.cl/" target="_blank">
+              <img src="media/irade/aitue.png" alt="aitue" class="img-fluid" style="width: 60px;">
+                </a>
+
+              <a href="https://www.engie.cl/" target="_blank">
+              <img src="media/irade/engie.jpg" alt="engie" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://www.sanatorioaleman.cl/" target="_blank">
+              <img src="media/irade/sanatorioAleman.jpg" alt="sanatorioAleman" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://www.cmpc.com/" target="_blank">
+              <img src="media/irade/cmpc.png" alt="cmpc" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://www.buseshualpen.cl/" target="_blank">
+              <img src="media/irade/hualpen.jpg" alt="hualpen" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://somosaclara.cl/" target="_blank">
+              <img src="media/irade/aclara.jpg" alt="aclara" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://www.pwc.com/cl/es" target="_blank">
+              <img src="media/irade/pwc.jpg" alt="pwc" class="img-fluid" style="width: 60px;">
+              </a>
+
+              
+              <a href="https://www.essbio.cl/" target="_blank">
+              <img src="media/irade/essbio.png" alt="essbio" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://www.turismoesquerre.cl/" target="_blank">
+              <img src="media/irade/turismoEsquerre.webp" alt="turismoEsquerre" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="" target="_blank">
+              <img src="media/irade/foodCorp.png" alt="foodCorp" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://www.molycop.com/es-es" target="_blank">
+              <img src="media/irade/molycop.webp" alt="molycop" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://www.redfarma.cl/" target="_blank">
+              <img src="media/irade/redFarma.jpg" alt="redFarma" class="img-fluid" style="width: 60px;">
+              </a>
+
+              <a href="https://ucsc.cl/" target="_blank">
+              <img src="media/irade/ucsc.png" alt="ucsc" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/cge.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/PuertoCoronel.jpg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/wellness.webp" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/floresAsociados.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/icalma.jpg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/setop.jpg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/pacificBlue.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/huachipato.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/blumar.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/achs.svg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/saalasti.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/afpCapital.svg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/mack.jpg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/naviera.jpg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/puertosTalcahuano.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/rucalhue.jpg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/acades/essbio.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/ugps.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/imlogistica.jpg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/aguasSantino.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/altoOrizonte.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/centroMedicoTrabajador.jpg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/ecofor.jpg" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/volcanFoods.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/claroEmpresas.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/grupoEnergy.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/metaProject.gif" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/innergex.webp" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/rancoActivo.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/ceso.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/nutrisco.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/urbani.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/maat.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            <a href="https://www.cge.cl/" target="_blank">
+              <img src="media/irade/camanchaca.png" alt="cge" class="img-fluid" style="width: 60px;">
+            </a>
+            
+              <!-- Agrega más logos si deseas -->
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <div class="col-6 col-md-3 mb-4 position-relative">
+
+          <a href="https://www.acades.cl/" target="_blank">
+ 
+            <img src="media/acades_r_slogan_dark.svg" class="img-fluid w-50 transition" alt="Logo ACADES">
+          </a>
+          <!-- Panel oculto que se muestra al hacer hover -->
+          <div class="dropdown-logos bg-light p-3 rounded shadow-lg">
+            <h6 class="fw-bold mb-3">Empresas asociadas a ACADES</h6>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+
+
+
+        
+                <a href="https://www.acciona.cl/" target="_blank">
+                  <img src="media/acades/Acciona_logo.svg.png" alt="Acciona" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.aeschile.cl/" target="_blank">
+                  <img src="media/acades/aes.webp" alt="AES Chile" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.aguasantofagasta.cl/" target="_blank">
+                  <img src="media/acades/aguasAntofagasta.png" alt="Aguas de Antofagasta" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.aguasnuevas.cl/" target="_blank">
+                  <img src="media/acades/aguasNuevas.jpg" alt="Aguas Nuevas" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.almarwater.com/" target="_blank">
+                  <img src="media/acades/almar.png" alt="Almar Water Solutions" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://ide-tech.com/es/" target="_blank">
+                  <img src="media/acades/ide.png" alt="IDE Chile Spa" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.bye.cl/" target="_blank">
+                  <img src="media/acades/barrosErrazuriz.png" alt="Barros & Errázuriz" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.bv.com/" target="_blank">
+                  <img src="media/acades/blackVeatch.png" alt="Black and Veatch" class="img-fluid" style="width: 60px;">
+                </a>
+              
+                <a href="https://www.idom.com/" target="_blank">
+                  <img src="media/acades/idom.jpg" alt="IDOM" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.gsinima.com/" target="_blank">
+                  <img src="media/acades/gsInima.png" alt="GS Inima" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.oceanus.cl/" target="_blank">
+                  <img src="media/acades/Oceanus.svg" alt="Oceanus" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/suez.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/R&Q.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/aguasCap.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/engie.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/ecopreneur.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/BHP.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/cdmSmith.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/bonatti.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/prieto.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/aguasPacifo.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/esval.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/essbio.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/veolio.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+              
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/cadagua.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/energyChina.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/keepex.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/epasLTDA.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+              
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/colbun.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+                
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/siemens.jpg" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/powerChina.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/peresAlvarez.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+              
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/lg.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/trends.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+
+                <a href="https://www.suez.com/" target="_blank">
+                  <img src="media/acades/transelec.png" alt="Suez" class="img-fluid" style="width: 60px;">
+                </a>
+              
+              <!-- Agrega más logos si deseas -->
+            </div>
+          </div>
+
+        </div>
+  
+        <!-- Otros logos -->
+
+        <div class="col-6 col-md-3 mb-4 position-relative">
+
+          <a href="https://www.aidis.cl/" target="_blank">
+            <img src="media/LOGO-AIDIS-2019-alta-1-189x155.png" class="img-fluid w-50 transition" alt="Logo AIDIS">
+          </a>
+          <!-- Panel oculto que se muestra al hacer hover -->
+          <div class="dropdown-logos bg-light p-3 rounded shadow-lg">
+            <h6 class="fw-bold mb-3">Empresas asociadas a AIDIS</h6>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+              <a href="https://www.arauco.cl/" target="_blank">
+                <img src="media/irade/Arauco_Logo.svg.png" alt="Arauco" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.cmpc.com/" target="_blank">
+                <img src="media/aidis/cmpc.png" alt="CMPC" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.enap.cl/" target="_blank">
+                <img src="media/aidis/enap.jpg" alt="ENAP" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.codelco.com/" target="_blank">
+                <img src="media/aidis/codelco.png" alt="Codelco" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/colbun.jpg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/Empresas/Logo_Aguas_Andinas_(Vertical).jpg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/aguasCordillera.webp" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/aguasManquehue.jpg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/aguasColina.jpeg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/aguasNuevas.jpg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/AguasSantiagoPoniente.png" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/essal.webp" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/essbio.png" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/esval.jpg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/mop.png" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/suez.png" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/hidrosan.jpg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/analisisAmbientales.png" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/hanna.png" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/biodiversa.jpg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/teheSunergy.jpg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.colbun.cl/" target="_blank">
+                <img src="media/aidis/saintCobain.jpg" alt="Colbún" class="img-fluid" style="width: 60px;">
+              </a>
+              <!-- Agrega más logos si deseas -->
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="col-6 col-md-3 mb-4 position-relative">
+
+          <a href="https://www.griclub.org/" target="_blank">
+            <img src="media/gri.jpg" class="img-fluid w-50 transition" alt="Logo GRI Club">
+          </a>
+          <!-- Panel oculto que se muestra al hacer hover -->
+          <div class="dropdown-logos bg-light p-3 rounded shadow-lg">
+            <h6 class="fw-bold mb-3">Empresas asociadas a GRICLUB</h6>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+              <a href="http://www.socovesa.cl/" target="_blank">
+                <img src="media/griClub/socovesa.jpg" alt="Socovesa" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.megacentro.cl/" target="_blank">
+                <img src="media/griClub/megacentro.webp" alt="Megacentro" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="http://www.cuestamoras.com/" target="_blank">
+                <img src="media/griClub/cuestamoras.jpg" alt="Cuestamoras Urbanismo" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="http://www.pgimrealestate.com/" target="_blank">
+                <img src="media/griClub/pgim.png" alt="PGIM Real Estate" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://cinuk.mx/en/" target="_blank">
+                <img src="media/griClub/cinuk.webp" alt="CINUK" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="http://www.cbre.com.mx/" target="_blank">
+                <img src="media/griClub/cbre.jpg" alt="CBRE México" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.linkedin.com/company/agartha-capital/about/" target="_blank">
+                <img src="media/griClub/agartha.jpg" alt="Agartha Capital" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="http://fibra-uno.com" target="_blank">
+                <img src="media/griClub/fibraUno.jpg" alt="Fibra Uno" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="http://www.amb.com" target="_blank">
+                <img src="media/griClub/amb-property-corporation.svg" alt="AMB Property Corporation" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="http://www.vinte.com" target="_blank">
+                <img src="media/griClub/vinte.png" alt="Vinte" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="http://spectrum.com.gt/" target="_blank">
+                <img src="media/griClub/spectrum.jpg" alt="Spectrum" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.hines.com" target="_blank">
+                <img src="media/griClub/hines.png" alt="Hines" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://fibrainn.mx/en" target="_blank">
+                <img src="media/griClub/fibraIn.jpg" alt="Fibra Inn" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.miracompanies.com/" target="_blank">
+                <img src="media/griClub/mira.jpg" alt="MIRA Companies" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="https://www.miracompanies.com/" target="_blank">
+                <img src="media/griClub/brookfield.png" alt="MIRA Companies" class="img-fluid" style="width: 60px;">
+              </a>
+               <a href="http://www.bancsabadell.com" target="_blank">
+                <img src="media/griClub/sabadell.png" alt="Banco Sabadell" class="img-fluid" style="width: 60px;">
+              </a>
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/caribe.jpg" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/btg.png" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/caf.jpg" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/cdpq.png" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/credicorp.png" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/dif.png" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/acciona.jpg" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/corporacionAmerica.png" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/tramarsa.png" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/deutsche.png" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/aon.png" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/multiproyectos.jpg" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+
+              <a href="http://www.caribehospitality.com/" target="_blank">
+                <img src="media/griClub/proprium.jpg" alt="Caribe Hospitality" class="img-fluid" style="width: 60px;">
+              </a> 
+
+            </div>
+          </div>
+
+        </div>
+     
+      
+      
+      </div>
+  
+      <!-- Línea decorativa -->
+      <hr class="mt-4" style="border-top: 10px solid #778899;">
+    </div>
+  </section>
+  
+  
+
+  
+
+  
+  <!-- Bootstrap + Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+  
+        
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  </main>
+  <!-- ====================== BOTÓN WHATSAPP ====================== -->
+  <a href="https://wa.me/56923789114" class="whatsapp-float" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" />
+  </a> 
+
+
+    <div class="text-center">
+    <img src="https://i.pravatar.cc/100" alt="Avatar" class="avatar mb-2">
+    <h5>Nombre del Usuario</h5>
+  </div>
+
+
+
+
+
+
+  
+</body>
+
+
+
+
+  
+
+ <!-- Footer -->
+<footer class="bg-dark text-white py-1">
+  <div class="container">
+    <div class="row align-items-start">
+
+      <!-- Código QR en la esquina izquierda -->
+      <div class="col-md-3 d-flex justify-content-center align-items-center mb-3 mb-md-0">
+        <img src="media/qrcode.jpeg" alt="QR App LECO" style="width: 110px;">
+      </div>
+
+      <!-- Servicios -->
+      <div class="col-md-3 mb-3">
+        <h6 class="mb-2 small">Servicios</h6> <!-- Título más pequeño -->
+        <ul class="list-unstyled mb-0" style="font-size: 0.75rem;"> <!-- Tamaño de texto reducido -->
+          <li><a href="#" class="text-white-50">Ingeniería No Invasiva</a></li>
+          <li><a href="#" class="text-white-50">Ejecución Técnica y Operativa</a></li>
+          <li><a href="#" class="text-white-50">Inversión Estructurada</a></li>
+          <li><a href="#" class="text-white-50">Inteligencia Comercial</a></li>
+          <li><a href="#" class="text-white-50">Visibilidad y Networking</a></li>
+          <li><a href="#" class="text-white-50">Red de Franquicias</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes sociales y contacto -->
+      <div class="col-md-3 mb-3">
+        <h6 class="mb-2">Síguenos</h6>
+        <div class="d-flex flex-wrap gap-2 mb-2">
+          <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-tiktok"></i></a>
+        </div>
+        <p class="mb-0 small"><a href="mailto:contacto@leco.cl" class="text-white-50">contacto@leco.cl</a></p>
+        <p class="mb-0">600 401 9900</p>
+        <p class="mb-0 small">www.leco.cl</p>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="col-md-3 mb-3">
+        <h6 class="mb-2">Suscríbete</h6>
+        <p class="text-white-50 small mb-2">Recibe nuestras últimas noticias</p>
+        <form>
+          <div class="input-group input-group-sm">
+            <input type="email" class="form-control" placeholder="Email" required>
+            <button class="btn btn-primary" type="submit">OK</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Banderas y derechos -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-3 mt-3 border-top text-white-50 small">
+      <div class="d-flex flex-wrap align-items-center justify-content-center gap-1 mb-2 mb-md-0">
+        <img src="media/banderas/arg.png" alt="Argentina" style="height: 14px;">
+        <img src="media/banderas/bol.png" alt="Bolivia" style="height: 14px;">
+        <img src="media/banderas/bra.png" alt="Brasil" style="height: 14px;">
+        <img src="media/banderas/cl.png" alt="Chile" style="height: 14px;">
+        <img src="media/banderas/col.png" alt="Colombia" style="height: 14px;">
+        <img src="media/banderas/ecu.png" alt="Ecuador" style="height: 14px;">
+        <img src="media/banderas/guy.png" alt="Guyana" style="height: 14px;">
+        <img src="media/banderas/par.png" alt="Paraguay" style="height: 14px;">
+        <img src="media/banderas/per.png" alt="Perú" style="height: 14px;">
+        <img src="media/banderas/sur.png" alt="Surinam" style="height: 14px;">
+        <img src="media/banderas/uru.png" alt="Uruguay" style="height: 14px;">
+      </div>
+
+      <div class="text-center text-md-end">
+        <div>© 2025 LECO LATAM</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+
+</html>
+
+<script>
+  const music = document.getElementById('backgroundMusic');
+  const musicButton = document.getElementById('musicToggleButton');
+  let isPlaying = false;
+  music.volume = 0.2;
+  function toggleMusic() {
+    if (!isPlaying) {
+      
+      music.currentTime = 5; // Empieza en el segundo 5
+      music.play();
+      isPlaying = true;
+      musicButton.innerHTML = "⏸️"; // Cambia el icono al de pausa
+    } else {
+      music.pause();
+      isPlaying = false;
+      musicButton.innerHTML = "🔊"; // Cambia el icono al de sonido
+    }
+  }
+
+  // Cuando la música termine, que vuelva a empezar desde el segundo 5
+  music.addEventListener('ended', () => {
+    music.currentTime = 5;
+    music.play();
+  });
+</script>
+
+<!-- Nuevo Jquery que si cambia el color del navbar cuando despliego el dropdown -->
+<script>
+$(function() {
+  let timeout;
+  
+  $('.nav-item.dropdown').hover(
+    function () {
+      clearTimeout(timeout);
+      $(this).addClass('show');
+      $(this).find('.dropdown-menu').addClass('show');
+      // Cambiar el fondo del navbar a blanco
+      $('.navbar').addClass('navbar-white-bg');
+    },
+    function () {
+      timeout = setTimeout(() => {
+        $(this).removeClass('show');
+        $(this).find('.dropdown-menu').removeClass('show');
+        // Volver al fondo transparente
+        $('.navbar').removeClass('navbar-white-bg');
+      }, 300); // delay de 300ms para permitir que el mouse se mueva dentro del dropdown
+    }
+  );
+});
+
+</script>
+
+<!-- Dropdown del navbar antigua version que no cambiaba el color del navbar cuando se despliega el dropdown -->
+<!-- <script>
+  $(function() {
+    let timeout;
+  
+    $('.nav-item.dropdown').hover(
+      function () {
+        clearTimeout(timeout);
+        $(this).addClass('show');
+        $(this).find('.dropdown-menu').addClass('show');
+      },
+      function () {
+        timeout = setTimeout(() => {
+          $(this).removeClass('show');
+          $(this).find('.dropdown-menu').removeClass('show');
+        }, 300); // delay de 300ms para permitir que el mouse se mueva dentro del dropdown
+      }
+    );
+  });
+  </script> -->
+  
+
+
+
+
+
+<!-- Codigo paginacion Noticias-->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const groups = document.querySelectorAll('.noticia-group');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  let currentGroup = 0;
+
+  function showGroup(index) {
+    groups.forEach((group, i) => {
+      group.classList.toggle('d-none', i !== index);
+    });
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === groups.length - 1;
+  }
+
+  prevBtn.addEventListener('click', function () {
+    if (currentGroup > 0) {
+      currentGroup--;
+      showGroup(currentGroup);
+    }
+  });
+
+  nextBtn.addEventListener('click', function () {
+    if (currentGroup < groups.length - 1) {
+      currentGroup++;
+      showGroup(currentGroup);
+    }
+  });
+
+  showGroup(currentGroup); // Muestra el primer grupo al inicio
+});
+</script>
+
+
+
+
+<!-- Efectos navbar -->
+<script>
+window.addEventListener('scroll', function () {
+  const navbar = document.querySelector('.navbar');
+  const scrollY = window.scrollY;
+
+  if (scrollY > 50) {
+    navbar.classList.remove('navbar-initial');
+    navbar.classList.add('navbar-scrolled');
+  } else {
+    navbar.classList.remove('navbar-scrolled');
+    navbar.classList.add('navbar-initial');
+  }
+});
+</script>
+
+
+
+<!-- Codigo para videos de inicio -->
+
+<script>
+  const video = document.getElementById('backgroundVideo');
+  const sources = ["media/bannerI.mp4", "media/banner.mp4", "media/banner3.mp4"];
+  let currentVideo = 0;
+
+  // Aseguramos que comience con el primer video del array
+  video.src = sources[currentVideo];
+  video.load();
+  video.play();
+
+  video.addEventListener('ended', () => {
+    currentVideo = (currentVideo + 1) % sources.length;
+    video.src = sources[currentVideo];
+    video.load();
+    video.play();
+  });
+
+  video.addEventListener('timeupdate', () => {
+    if (video.src.includes('banner3.mp4') && video.currentTime >= 5) {
+      video.pause();
+      setTimeout(() => {
+        currentVideo = (currentVideo + 1) % sources.length;
+        video.src = sources[currentVideo];
+        video.load();
+        video.play();
+      }, 500);
+    }
+  });
+</script>
+
+
+<!-- <script>
+const video = document.getElementById('backgroundVideo');
+const sources = ["media/banner.mp4","media/bannerI.mp4","media/banner3.mp4"];
+let currentVideo = 0;
+
+video.addEventListener('ended', () => {
+  currentVideo = (currentVideo + 1) % sources.length; // Cambia al siguiente video
+  video.src = sources[currentVideo];
+  video.load();
+  video.play();
+});
+</script> -->
+
+<!-- Musica -->
+
+
+  
+
+
+
+
+
+
+
+ 

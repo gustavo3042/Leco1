@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUienes Somos</title>
+
+ 
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.js"></script>
+  
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.css" rel="stylesheet">
+  
+  
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- En el <head> -->
+   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+   </head>
+  
+    <!-- Estilos Personalizados -->
+  
+
+    <style>
+
+    
+      .hero {
+        background: #e0e0e0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
+  
+      .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+      }
+  
+      .whatsapp-float img {
+        width: 50px;
+        height: 50px;
+      }
+  
+      .text-justify {
+      text-align: justify;
+      }
+  
+      .noticia-img {
+          max-height: 250px;
+     /*  height: 200px; */
+      object-fit: cover;
+      width: 100%;
+      }
+  
+      .card-img-top {
+    height: 200px; /* o el alto que prefieras */
+    object-fit: cover;
+      }
+  
+      .img-custom {
+    max-width: 100%; /* Asegura que no se salga de la columna */
+    height: auto;
+    max-height: 400px; /* Ajusta este valor según lo que necesites */
+      }
+  
+      .bottom-text {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+      }
+      
+      .logo {
+      height: 60px; /* Más grande que el típico 40px */
+      width: auto;
+      }
+  
+  
+      .hero-section {
+        background: #1e344f; /* Azul oscuro */
+        color: white;
+        position: relative;
+        overflow: hidden;
+        padding: 100px 0;
+      }
+      .hero-section::after {
+        content: "";
+        background: url('ruta-del-mapa.png') no-repeat center center;
+        background-size: cover;
+        opacity: 0.05;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      .hero-wave {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      .btn-primary {
+        background-color: #144e8a;
+        border-color: #144e8a;
+      }
+      .video-thumbnail {
+        position: relative;
+        cursor: pointer;
+      }
+      .video-thumbnail::after {
+        content: "▶";
+        font-size: 48px;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        padding: 10px 15px;
+      }
+  
+  
+  
+  
+  /* Transición para efectos */
+  .transition:hover {
+      transform: translateY(-8px);
+      transition: all 0.3s ease;
+  }
+  
+    .custom-footer{
+  
+      background-color: #4a4a4a; /* un gris intermedio */
+  }
+  
+  
+    #calendar {
+      max-width: 100%;
+      margin: 0 auto;
+  }
+  
+  .fc-toolbar-title {
+      text-transform: capitalize;
+    }
+  
+  
+     /* Cambiar color de fondo de los días */
+     .fc-daygrid-day {
+      background-color: #f8f9fa; /* gris clarito */
+    }
+  
+    /* Cambiar color de los eventos */
+    .fc-event {
+      background-color: #0d6efd; /* azul Bootstrap */
+      border: none;
+      color: white;
+      padding: 2px 4px;
+      font-size: 0.85rem;
+      border-radius: 0.5rem;
+    }
+  
+    /* Cambiar color del header */
+    .fc-toolbar-title {
+      color: #0d6efd;
+      font-weight: bold;
+    }
+  
+    .fc-button {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      color: #fff;
+    }
+  
+    .fc-button:hover {
+      background-color: #0b5ed7;
+      border-color: #0b5ed7;
+    }
+  
+    /* "Hoy" resaltado */
+    .fc-day-today {
+      background-color: #ffeeba !important;
+    }
+  
+  
+  .logos-scroll {
+      max-height: 400px;
+      overflow-y: auto;
+      scrollbar-width: thin; /* para Firefox */
+      scrollbar-color: #ccc transparent;
+    }
+  
+    /* para Chrome, Edge, Safari */
+    .logos-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+  
+    .logos-scroll::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 3px;
+    }
+  
+  
+  
+  /* Zoom Nuestras noticias */
+  
+  .zoom-hover {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background-color: #0b1437; /* Color de fondo por defecto */
+    border-radius: 1rem;
+  }
+  
+  .zoom-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+  
+  
+  
+   .zoom-image-container {
+      height: 250px;
+      overflow: hidden;
+    }
+  
+    .zoom-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+  .zoom-hover:hover .zoom-image {
+    transform: scale(1.1);
+  }
+  
+  .card-img-overlay {
+    background: rgba(11, 20, 55, 0.6); /* Fondo semitransparente */
+    transition: background 0.3s ease;
+  }
+  
+  .zoom-hover:hover .card-img-overlay {
+    background: rgba(11, 20, 55, 0.4); /* Un poco más claro en hover */
+  }
+  
+  
+  
+  
+  /* Nuevo navbar */
+  
+  .navbar-nav .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+      }
+  
+  
+  
+  
+  
+      .dropdown-menu {
+            width: 100vw; 
+            left: 0;
+            right: auto;
+            padding: 20px;
+            border-radius: 10px; 
+            background: #ffffff;          /* Fondo blanco. */
+            position: absolute;           /* Se posiciona en relación al contenedor más cercano con posición relativa. */
+            opacity: 0;                   /* Inicialmente invisible (transparente). */
+            visibility: hidden;          /* También oculto para interacción (no clickable). */
+            transition: opacity 0.3s ease; /* Transición suave al mostrar (solo para opacidad). */
+  
+            max-height: none;            /* Sin límite de alto, puede crecer libremente. */
+      } 
+      
+      .dropdown-menu h6 {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      
+      .dropdown-menu p {
+        font-size: 14px;
+        color: #666;
+      }
+      
+      .dropdown-menu .col-md-4:hover {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+        padding: 10px;
+      }
+      
+      .dropdown-menu .link-item {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+      
+      .dropdown-menu .link-item:hover {
+        color: #007bff;
+      }
+      
+      .dropdown-menu .card {
+        border: none;
+        transition: transform 0.3s;
+      }
+      
+      .dropdown-menu .card:hover {
+        transform: translateY(-5px);
+      }
+      
+      .dropdown-menu .image-column img {
+        max-width: 100%;
+        height: auto;
+        width: 300px;
+        border-radius: 10px;
+      }
+      
+      /* Mejora para dispositivos moviles */
+      @media (max-width: 768px) {
+            .dropdown-menu {
+            width: auto;
+            left: 0;
+            right: auto;
+            padding: 20px;
+            }
+  
+        .dropdown-menu .row {
+          flex-direction: column;
+        }
+        .dropdown-menu .image-column {
+          margin-top: 20px;
+          text-align: center;
+        }
+      }
+      
+      .navbar-hover-white {
+        background-color: #ffffff !important;
+        transition: background-color 0.3s;
+      }
+      
+   
+      
+      .navbar {
+        transition: background-color 0.3s, color 0.3s;
+      }
+      
+      .navbar-nav .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        margin-top: 0;
+      }
+  
+      .navbar .nav-link {
+      transition: color 0.3s ease;
+    }
+  
+  
+    
+  
+  
+    .navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+  }
+  
+  .navbar-scrolled .nav-link,
+  .navbar-scrolled .navbar-brand,
+  .navbar-scrolled .navbar-toggler-icon {
+    color: #000 !important;
+  }
+  
+  
+  .navbar-dark-bg {
+    background-color: rgba(0, 0, 0, 0.8) !important; /* negro transparente */
+  }
+  
+  .navbar-dark-bg .nav-link,
+  .navbar-dark-bg .navbar-brand,
+  .navbar-dark-bg .navbar-toggler-icon {
+    color: white !important;
+  }
+  .navbar .nav-link {
+    color: #ffffff !important; /* blanco puro */
+  }
+  
+  
+/*   .navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  } */
+  
+  .navbar-initial .nav-link,
+  .navbar-initial .navbar-brand,
+  .navbar-initial .navbar-toggler-icon {
+    color: white !important;
+  }
+  
+  .navbar-scrolled .nav-link,
+  .navbar-scrolled .navbar-brand,
+  .navbar-scrolled .navbar-toggler-icon {
+    color: #000 !important;
+  }
+  
+  .navbar-initial .navbar-brand img {
+    filter: brightness(100%);
+    transition: filter 0.3s;
+  }
+  
+  .navbar-scrolled .navbar-brand img {
+   /*  filter: brightness(0%) invert(1); */ /* o reemplaza el logo si tenés una versión dark */
+  }
+  
+  
+  /* Mostrar dropdown al hacer hover */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Animación de aparición */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  
+  .navbar-transparent-white {
+  background-color: rgba(255, 255, 255, 0.8) !important; /* Blanco semi-transparente */
+  backdrop-filter: blur(8px); /* Efecto de difuminado sutil */
+  color: #000 !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-transparent-white .nav-link,
+.navbar-transparent-white .navbar-brand,
+.navbar-transparent-white .navbar-toggler-icon {
+  color: #000 !important;
+}
+
+
+
+/* Navbar animacion */
+
+/* Animación de subrayado en los links */
+.custom-link {
+  position: relative;
+  display: inline-block;
+  color: inherit; /* mantiene el color del texto */
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.custom-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #28a745; /* color del subrayado, puedes cambiarlo */
+  transition: width 0.3s ease;
+}
+
+.custom-link:hover::after {
+  width: 100%;
+}
+
+/* Opcional: cambiar color al pasar el mouse */
+.custom-link:hover {
+  color: #28a745;
+}
+
+  
+/* Imagenes mas pequeñas */
+
+.img-small {
+    max-width: 60%; /* o el porcentaje que prefieras, ej: 70%, 60% */
+    height: auto;
+    margin: 0 auto; /* opcional para centrar */
+    display: block; /* opcional para que el margin funcione */
+  }
+
+  .img-small2 {
+    max-width: 75%; /* o el porcentaje que prefieras, ej: 70%, 60% */
+    height: auto;
+    margin: 0 auto; /* opcional para centrar */
+    display: block; /* opcional para que el margin funcione */
+  }
+  
+
+  .img-small3 {
+    max-width: 45%; /* o el porcentaje que prefieras, ej: 70%, 60% */
+    height: auto;
+    margin: 0 auto; /* opcional para centrar */
+    display: block; /* opcional para que el margin funcione */
+  }
+  
+  
+  
+    </style>
+<body>
+
+      
+
+
+
+ <!--  <nav class="navbar navbar-expand-lg navbar-dark navbar-initial shadow-sm fixed-top py-4"> -->
+  <nav class="navbar navbar-expand-lg navbar-light navbar-transparent-white shadow-sm fixed-top py-4">
+
+    <div class="container-fluid">
+  
+      <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" href="#">
+        <img src="../media/logo_transparente.png" alt="Logo" width="40" height="40">
+        LECO LATAM
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="../index.html">Inicio</a></li>
+  
+        
+  
+  
+          <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="#">Quienes Somos</a></li>
+          <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="nuestrosServicios.html">Nuestros Servicios</a></li>
+          <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="comoTrabajamos.html">Proveedores</a></li>
+          <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="noticias.html">Noticias</a></li>
+          <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="directorio.html">Directorio</a></li>
+          <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="directorio.html">Revista</a></li>
+          <li class="nav-item dropdown position-static"><a class="nav-link custom-link" href="calendario.html">Congresos y Seminarios</a></li>
+        </ul>
+  
+        <ul class="navbar-nav d-flex align-items-center gap-3">
+          <li class="nav-item">
+            <a class="btn btn-success d-flex align-items-center" href="#">
+              <i class="bi bi-calendar-event me-2"></i> Agenda tu Reunión
+            </a>
+          </li>
+          <li class="nav-item d-flex align-items-center gap-2">
+            <img src="../media/españa.png" width="24" alt="Español">
+            <img src="../media/eeuu.png" width="24" alt="English">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<main class="container my-5">
+
+  
+  
+ <section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">¿Qué es el Consorcio LECO?</h2>
+      <p class="lead text-muted">Soluciones colaborativas en infraestructura, ingeniería y medio ambiente</p>
+    </div>
+
+    <!-- Primera fila: Qué es + Imagen -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <h4 class="fw-bold">Plataforma Colaborativa</h4>
+        <p>El Consorcio LECO es una red de empresas propias, aliadas y franquiciadas que trabajan juntas para ejecutar proyectos de infraestructura, ingeniería no invasiva y soluciones ambientales en América Latina. Actualmente impulsa el ecosistema <strong>LECO-LATAM</strong>, enfocado en la sostenibilidad regional.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="media/ConsorcioLeco.jpeg" alt="Consorcio LECO" class="img-fluid rounded shadow-sm">
+      </div>
+    </div>
+
+    <!-- Segunda fila: Objetivo + Misión -->
+<!--     <div class="row text-center mb-5">
+      <div class="col-md-6">
+        <div class="p-4 bg-white rounded shadow-sm h-100">
+          <h5 class="fw-bold">Objetivo</h5>
+          <p>Desarrollar proyectos complejos de forma eficiente, colaborativa y con alto estándar técnico, generando valor compartido para clientes y territorios.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-4 bg-white rounded shadow-sm h-100">
+          <h5 class="fw-bold">Misión</h5>
+          <p>Conectar y potenciar empresas técnicas y operativas mediante un modelo colaborativo, con respaldo tecnológico, eficiencia y trazabilidad.</p>
+        </div>
+      </div>
+    </div>
+ -->
+    <!-- Tercera fila: Estructura Operativa -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 order-md-2">
+        <h4 class="fw-bold">Estructura Operativa</h4>
+        <p>El consorcio articula empresas propias y subcontratistas bajo una estructura colaborativa. Destacan las áreas de:</p>
+        <ul>
+          <li>Espacio Confinado</li>
+          <li>Dragado</li>
+          <li>Termofusión</li>
+          <li>Transporte de Lodo</li>
+          <li>Maestranza de Innovación Técnica</li>
+        </ul>
+      </div>
+      <div class="col-md-6 order-md-1">
+        <img src="media/networking.png" alt="Estructura Operativa LECO" class="img-fluid rounded shadow-sm">
+      </div>
+    </div>
+
+    <!-- Cuarta fila: Modelo de franquicia -->
+    <div class="row text-center">
+      <div class="col-lg-12">
+        <div class="p-4 bg-white rounded shadow-sm">
+          <h5 class="fw-bold">Modelo de Franquicia Técnica</h5>
+          <p>Permite escalar territorialmente los estándares del consorcio mediante empresas locales que replican procesos certificados, impulsando crecimiento y estandarización bajo la marca LECO.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+
+  
+
+  
+  <!-- Bootstrap + Icons CDN -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+        
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  </main>
+  <!-- ====================== BOTÓN WHATSAPP ====================== -->
+  <a href="https://wa.me/56923789114" class="whatsapp-float" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" />
+  </a> 
+
+
+
+</body>
+
+
+<footer class="bg-dark text-white py-1">
+  <div class="container">
+    <div class="row align-items-start">
+
+      <!-- Código QR en la esquina izquierda -->
+      <div class="col-md-3 d-flex justify-content-center align-items-center mb-3 mb-md-0">
+        <img src="../media/qrcode.jpeg" alt="QR App LECO" style="width: 110px;">
+      </div>
+
+      <!-- Servicios -->
+      <div class="col-md-3 mb-3">
+        <h6 class="mb-2 small">Servicios</h6> <!-- Título más pequeño -->
+        <ul class="list-unstyled mb-0" style="font-size: 0.75rem;"> <!-- Tamaño de texto reducido -->
+          <li><a href="#" class="text-white-50">Ingeniería No Invasiva</a></li>
+          <li><a href="#" class="text-white-50">Ejecución Técnica y Operativa</a></li>
+          <li><a href="#" class="text-white-50">Inversión Estructurada</a></li>
+          <li><a href="#" class="text-white-50">Inteligencia Comercial</a></li>
+          <li><a href="#" class="text-white-50">Visibilidad y Networking</a></li>
+          <li><a href="#" class="text-white-50">Red de Franquicias</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes sociales y contacto -->
+      <div class="col-md-3 mb-3">
+        <h6 class="mb-2">Síguenos</h6>
+        <div class="d-flex flex-wrap gap-2 mb-2">
+          <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-tiktok"></i></a>
+        </div>
+        <p class="mb-0 small"><a href="mailto:contacto@leco.cl" class="text-white-50">contacto@leco.cl</a></p>
+        <p class="mb-0">600 401 9900</p>
+        <p class="mb-0 small">www.leco.cl</p>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="col-md-3 mb-3">
+        <h6 class="mb-2">Suscríbete</h6>
+        <p class="text-white-50 small mb-2">Recibe nuestras últimas noticias</p>
+        <form>
+          <div class="input-group input-group-sm">
+            <input type="email" class="form-control" placeholder="Email" required>
+            <button class="btn btn-primary" type="submit">OK</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Banderas y derechos -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-3 mt-3 border-top text-white-50 small">
+      <div class="d-flex flex-wrap align-items-center justify-content-center gap-1 mb-2 mb-md-0">
+        <img src="../media/banderas/arg.png" alt="Argentina" style="height: 14px;">
+        <img src="../media/banderas/bol.png" alt="Bolivia" style="height: 14px;">
+        <img src="../media/banderas/bra.png" alt="Brasil" style="height: 14px;">
+        <img src="../media/banderas/cl.png" alt="Chile" style="height: 14px;">
+        <img src="../media/banderas/col.png" alt="Colombia" style="height: 14px;">
+        <img src="../media/banderas/ecu.png" alt="Ecuador" style="height: 14px;">
+        <img src="../media/banderas/guy.png" alt="Guyana" style="height: 14px;">
+        <img src="../media/banderas/par.png" alt="Paraguay" style="height: 14px;">
+        <img src="../media/banderas/per.png" alt="Perú" style="height: 14px;">
+        <img src="../media/banderas/sur.png" alt="Surinam" style="height: 14px;">
+        <img src="../media/banderas/uru.png" alt="Uruguay" style="height: 14px;">
+      </div>
+
+      <div class="text-center text-md-end">
+        <div>© 2025 LECO LATAM</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</html>
+
+
+
+
+  <script>
+    $(function() {
+      let timeout;
+    
+      $('.nav-item.dropdown').hover(
+        function () {
+          clearTimeout(timeout);
+          $(this).addClass('show');
+          $(this).find('.dropdown-menu').addClass('show');
+        },
+        function () {
+          timeout = setTimeout(() => {
+            $(this).removeClass('show');
+            $(this).find('.dropdown-menu').removeClass('show');
+          }, 300); // delay de 300ms para permitir que el mouse se mueva dentro del dropdown
+        }
+      );
+    });
+    </script>
+
+
+<script>
+  // Cambiar clases al hacer scroll
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.custom-navbar');
+    if(window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+  </script>
+
+<script>
+  window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.navbar');
+    const scrollY = window.scrollY;
+  
+    if (scrollY > 50) {
+      navbar.classList.remove('navbar-initial');
+      navbar.classList.add('navbar-scrolled');
+    } else {
+      navbar.classList.remove('navbar-scrolled');
+      navbar.classList.add('navbar-initial');
+    }
+  });
+  </script>
